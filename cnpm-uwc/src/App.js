@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routesUWC } from "../src/routes";
+import { OverviewLayout } from "../src/components/Layouts";
 
 function App() {
   return (
@@ -8,8 +9,18 @@ function App() {
         <Routes>
           {routesUWC.map((route, index) => {
             const Page = route.component;
-            console.log(route.component);
-            return <Route key={index} path={route.path} element={<Page />} />;
+            let Layout = OverviewLayout;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
           })}
         </Routes>
       </div>
