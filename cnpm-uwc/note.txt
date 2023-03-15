@@ -1,0 +1,9 @@
+Inittial commit là chạy lệnh npm create-react-app
+Prettier commit là format cho code nó đồng đều, lưu file nó nó tự động format code lại, mn có thể sửa cho đúng ý mn hoặc kh cần cũng đuwocj
+Layout là chứa các layout giống nhau để có thể tái sử dụng, ở đây mới tạo 1 cái layout nên chưa xử lý logic gì trong App.js
+src/route chứa các đường dẫn, ví dụ /employee thì nó sẽ lấy pages/Employee là cái </Page> trong file App.js
+->localhost..../employee nó sẽ hiện header -> pages/employee -> footer
+
+
+
+Tạo thêm trang mới thì vào page tạo thư mục đó và vào route tạo đường dẫn
