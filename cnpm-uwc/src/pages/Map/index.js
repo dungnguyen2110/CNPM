@@ -1,5 +1,7 @@
+import InfoOverviewMap from "../../components/Layouts/components/InfoOverviewMap";
+
 function Map() {
-  return <h2>Bảng Map</h2>;
+  return <InfoOverviewMap></InfoOverviewMap>;
 }
 
 export default Map;

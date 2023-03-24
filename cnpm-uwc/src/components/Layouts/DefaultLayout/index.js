@@ -1,9 +1,7 @@
 import Header from "../components/Header";
-
-//Hien cac bang giong nhu bang nhan vien/ Ban do
 import Footer from "../components/Footer";
 
-function OverviewLayout({ children }) {
+function DefaultLayout({ children }) {
   return (
     <div>
       <Header />
@@ -15,4 +13,4 @@ function OverviewLayout({ children }) {
   );
 }
 
-export default OverviewLayout;
+export default DefaultLayout;

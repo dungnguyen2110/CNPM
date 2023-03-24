@@ -1,1 +1,1 @@
-export { default as OverviewLayout } from "./OverviewLayout";
+export { default as DefaultLayout } from "./DefaultLayout";
