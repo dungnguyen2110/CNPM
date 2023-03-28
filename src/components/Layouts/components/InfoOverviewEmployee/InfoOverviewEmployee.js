@@ -22,15 +22,15 @@ export function InfoOverviewEmployee() {
           <div className={styles.Table}>
             <div className={styles.TableHeaderInfo}>
               <div className={styles.Role}>
-                <img src={images.sortdecrement}></img>
+                <img alt= "" src={images.sortdecrement}></img>
                 Chức vụ
               </div>
               <div className={styles.Name}>
-                <img src={images.sortdecrement}></img>
+                <img alt= "" src={images.sortdecrement}></img>
                 Họ và tên
               </div>
               <div className={styles.Code}>
-                <img src={images.sortdecrement}></img>
+                <img alt = "" src={images.sortdecrement}></img>
                 Mã nhân viên
               </div>
             </div>
