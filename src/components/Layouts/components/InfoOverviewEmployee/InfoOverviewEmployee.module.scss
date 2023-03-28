@@ -1,0 +1,198 @@
+:root {
+  --khuvuc-color: #efecec;
+  --employee-color: rgba(134, 156, 237, 0.32);
+  --white: #fef9f9;
+}
+
+.InfoOverview__Employee {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 550px;
+
+  .EmployeeOverview {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+    border: 3px solid #000;
+    border-top: none;
+
+    .ActionContainer0 {
+      width: 40%;
+      height: 100%;
+      border-top: none;
+
+      .TaskHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        height: 10%;
+        background: #ded9d9;
+      }
+
+      .Action {
+        display: flex;
+        justify-content: center;
+        padding: 20px 10px;
+        width: 100%;
+        height: 90%;
+        border-right: 3px solid #000;
+
+        .SearchInput {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          width: 60%;
+          height: 50px;
+          background: var(--khuvuc-color);
+          border: 3px solid #000000;
+          border-radius: 30px;
+        }
+      }
+    }
+
+    .TableSection {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      width: 60%;
+      height: 100%;
+
+      .EmployeeInfoTable {
+        align-items: center;
+        padding: 10px 20px;
+        width: 100%;
+        height: 10%;
+        background: rgba(197, 194, 194, 0.28);
+      }
+
+      .Table {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        // border-bottom: none;
+        width: 100%;
+        height: 90%;
+
+        .TableHeaderInfo {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          height: 10%;
+          border: 3px solid #000;
+          border-right: none;
+          border-left: none;
+
+          .Role {
+            display: flex;
+            flex-direction: row;
+            // justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            width: 20%;
+
+            /* khuvuc color */
+
+            background: #efecec;
+          }
+
+          .Name {
+            /* Auto layout */
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            width: 30%;
+
+            /* White */
+
+            background: #fef9f9;
+          }
+
+          .Code {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            width: 30%;
+
+            /* khuvuc color */
+
+            background: #efecec;
+          }
+        }
+
+        .TableItemContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0px;
+
+          width: 100%;
+          height: 90%;
+
+          .TableInfoItem {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 45px;
+            border-bottom: 3px solid #000;
+
+            .Role {
+              display: flex;
+              flex-direction: row;
+              // justify-content: flex-end;
+              align-items: center;
+              padding: 10px;
+              width: 20%;
+
+              /* khuvuc color */
+
+              background: #efecec;
+            }
+
+            .Name {
+              /* Auto layout */
+
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 10px;
+              width: 30%;
+
+              /* White */
+
+              background: #fef9f9;
+            }
+
+            .Code {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 10px;
+              width: 30%;
+
+              /* khuvuc color */
+
+              background: #efecec;
+            }
+
+            .viewInfo {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 10px;
+              width: 20%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

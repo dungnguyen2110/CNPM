@@ -1,0 +1,511 @@
+:root {
+  --khuvuc-color: #efecec;
+  --employee-color: rgba(134, 156, 237, 0.32);
+  --white: #fef9f9;
+}
+
+.InfoOverview__Employee {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 550px;
+
+  .InfoCategory__container {
+    width: 100%;
+    height: 56px;
+    background: var(--khuvuc-color);
+    border: 3px solid #000;
+    border-radius: 20px 0px 0px 0px;
+
+    .Infomation__category {
+      display: inline-flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+      border-right: 3px solid #000;
+      border-bottom: none;
+
+      .Map__name__btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        border-right: 3px solid #000;
+      }
+      .Employee {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        background: var(--employee-color);
+        border-radius: 0px 20px 0px 0px;
+        border-right: 3px solid #000;
+      }
+    }
+  }
+
+  .EmployeeOverview {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 494px;
+
+    .EmployeeInfoheader {
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px 20px;
+      width: 100%;
+      height: 52px;
+      background: rgba(197, 194, 194, 0.28);
+      border-left: 3px solid #000000;
+      border-right: 3px solid #000000;
+    }
+
+    .EmployeeInfoContainer {
+      display: flex;
+      // flex-direction: row;
+      // align-items: flex-start;
+      padding: 0px;
+      gap: 3px;
+      width: 100%;
+      height: 437px;
+      /* White */
+      background: var(--white);
+      border: 3px solid #000;
+
+      .EmployeeInfoCard1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        width: 50%;
+        height: 437px;
+        border-right: 3px solid #000;
+
+        .TaskHeader {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 10px;
+          width: 100%;
+          height: 50px;
+          background: #ded9d9;
+        }
+
+        .Detail {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 100%;
+          height: 315px;
+
+          .ImageContainer1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            width: 50%;
+            height: 315px;
+
+            .ImageContainer0 {
+              width: 100%;
+              height: 315px;
+              background: url(https://cdn.pixabay.com/photo/2021/08/02/05/17/sunflower-6515860__340.jpg);
+            }
+          }
+
+          .Employee__detail__info {
+            /* Auto layout */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 30px 0px 30px 20px;
+            gap: 20px;
+            width: 50%;
+            height: 100%;
+            /* White */
+            background: var(--white);
+            border-radius: 0px;
+
+            .NameInfo {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              padding: 0px;
+              width: 100%;
+
+              .NameLabel {
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+
+              .Name {
+                padding-left: 10px;
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+            }
+            .Code__info {
+              /* Auto layout */
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              padding: 0px;
+              width: 100%;
+
+              .CodeLabel {
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+
+              .Code {
+                padding-left: 10px;
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+            }
+
+            .Citizen__info {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              padding: 0px;
+              width: 100%;
+
+              .Citizenlabel {
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+
+              .Citizen {
+                padding-left: 10px;
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+            }
+            .Age__info {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              padding: 0px;
+              width: 100%;
+
+              .AgeLabel {
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+
+              .Age {
+                padding-left: 10px;
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+            }
+            .Role__info {
+              /* Auto layout */
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              padding: 0px;
+              gap: 10px;
+              width: 320px;
+              height: 22px;
+              /* Inside auto layout */
+              flex: none;
+              order: 0;
+              align-self: stretch;
+              flex-grow: 0;
+
+              .RoleLabel {
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+
+              .Role {
+                padding-left: 10px;
+                height: 22px;
+                /* Destop text */
+                font-family: "Josefin Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 22px;
+                /* identical to box height */
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
+
+      .Tasks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        height: 437px;
+        .TaskHeader {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 10px;
+          width: 100%;
+          height: 50px;
+          background: #ded9d9;
+        }
+
+        .TaskContainer0 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          width: 100%;
+          height: 387px;
+          /* White */
+          background: var(--white);
+          border-bottom: 3px solid #000;
+          .TaskContainer1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            gap: 20px;
+            width: 70%;
+            height: 347px;
+            overflow-y: scroll;
+
+            .JanitorTaskInfo {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              padding: 0px 0px 10px;
+              gap: 20px;
+              width: 100%;
+              height: 116px;
+              border-bottom: 3px solid #000000;
+              .TaskTime {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0px;
+                gap: 10px;
+                width: 80%;
+                height: 22px;
+                .TimeLabel {
+                  width: 40%;
+                  height: 22px;
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+
+                .TaskTime {
+                  width: 60%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+              }
+
+              .VungInfo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0px;
+                gap: 10px;
+
+                width: 100%;
+                height: 22px;
+                .LocationLabel {
+                  width: 20%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+                .Location__Label {
+                  width: 30%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+                .KhuvucLabel {
+                  width: 20%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+                .Khuvuc {
+                  width: 30%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+              }
+
+              .ToolInfo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0px;
+                gap: 10px;
+
+                width: 100%;
+                height: 22px;
+
+                .ToolLabel {
+                  width: 40%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+
+                .ToolName {
+                  width: 60%;
+                  height: 22px;
+
+                  /* Destop text */
+
+                  font-family: "Josefin Sans";
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 22px;
+                  line-height: 22px;
+                  /* identical to box height */
+
+                  color: #000000;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
