@@ -1,0 +1,198 @@
+.mt16 {
+  margin-top: 16px;
+}
+
+.pdr10 {
+  padding-right: 10px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.regionInfo {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 5px 10px;
+  height: 8%;
+  background: rgba(197, 194, 194, 0.28);
+
+  .arrowback {
+    margin-right: 20px;
+  }
+
+  .arrowback:hover {
+    filter: var(--filter-hover);
+  }
+
+  .regionInfoElement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+  }
+}
+
+.infoElement {
+  padding: 12px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+
+  .viewInfo {
+    text-decoration: none;
+    color: var(--view-color);
+  }
+
+  .viewInfo:hover {
+    filter: var(--filter-hover);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 550px;
+  border: 3px solid #000;
+  border-top: none;
+}
+
+.regionContainer {
+  display: flex;
+  flex-direction: row;
+  height: 92%;
+  border-top: 3px solid #000000;
+  padding-top: 20px;
+}
+
+.headerTitle {
+  height: 30px;
+  border-bottom: 3px solid #000000;
+  padding: 0 10px;
+}
+
+.infoCollector {
+  padding-left: 40px;
+  text-decoration: none;
+  color: var(--view-color);
+}
+
+.infoCollector:hover {
+  filter: var(--view-hover);
+}
+
+.regionTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+
+  .taskInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    width: 100%;
+    height: 100%;
+    border-right: 3px solid #000;
+  }
+}
+
+.RouteBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+
+  .RouteBtn {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .leftBtn {
+    border: 3px solid #000000;
+    border-radius: 30px 0px 0px 30px;
+    border-right: none;
+  }
+
+  .rightBtn {
+    border-radius: 0px 30px 30px 0px;
+    border: 3px solid #000000;
+  }
+}
+
+.line {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid #000;
+}
+
+.optimizeColor {
+  background: var(--map-color);
+}
+
+.optimizeColor:hover {
+  background: var(--map-hover);
+}
+
+.editColor {
+  background: var(--emp-color);
+}
+
+.editColor:hover {
+  background: var(--emp-hover-color);
+}
+
+.deleteColor {
+  background: var(--delete);
+}
+
+.deleteColor:hover {
+  background: var(--delete-hover);
+}
+
+.taskEmpty {
+  width: 100%;
+  height: 100%;
+  border-right: 3px solid #000;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+
+  .addTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: 40px;
+    width: 60%;
+    background: var(--map-color);
+    border: 3px solid #000000;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
+  .addTask:hover {
+    background: var(--map-hover);
+  }
+}
+
+.regionMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 40px;
+}
+
+.mapDetail {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  margin: 20px 0;
+}

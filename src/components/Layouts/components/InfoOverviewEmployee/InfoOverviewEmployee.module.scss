@@ -41,17 +41,6 @@
         width: 100%;
         height: 90%;
         border-right: 3px solid #000;
-
-        .SearchInput {
-          display: flex;
-          align-items: center;
-          padding: 10px 20px;
-          width: 60%;
-          height: 50px;
-          background: var(--khuvuc-color);
-          border: 3px solid #000000;
-          border-radius: 30px;
-        }
       }
     }
 
@@ -87,6 +76,9 @@
           border: 3px solid #000;
           border-right: none;
           border-left: none;
+          .sort {
+            padding-left: 15px;
+          }
 
           .Role {
             display: flex;
@@ -98,7 +90,7 @@
 
             /* khuvuc color */
 
-            background: #efecec;
+            background: var(--khuvuc-color);
           }
 
           .Name {
@@ -133,9 +125,9 @@
           flex-direction: column;
           align-items: center;
           padding: 0px;
-
           width: 100%;
           height: 90%;
+          // overflow-y: scroll;
 
           .TableInfoItem {
             display: flex;
@@ -147,7 +139,6 @@
             .Role {
               display: flex;
               flex-direction: row;
-              // justify-content: flex-end;
               align-items: center;
               padding: 10px;
               width: 20%;
@@ -189,6 +180,12 @@
               align-items: center;
               padding: 10px;
               width: 20%;
+              text-decoration: none;
+              color: var(--view-color);
+            }
+
+            .viewInfo:hover {
+              filter: var(--view-hover);
             }
           }
         }

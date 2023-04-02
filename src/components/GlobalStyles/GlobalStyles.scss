@@ -1,14 +1,23 @@
 @import "normalize.css";
 
 :root {
+  --view-color: #6c8af2;
+  --edit-color: #6c8af2;
+  --delete-color: #ff6a6a;
+  --filter-hover: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+  --map-color: #cbe9c8;
+  --map-hover: #b6d3b3;
+  --delete-btn-color: #f59595;
+  --delete-btn-hover-color: #ff6a6a;
+  --yellow-color: #edebc1;
+  --yellow-hover: #dad7a6;
+  --white-color: #fef9f9;
+  --emp-color: rgba(134, 156, 237, 0.32);
+  --emp-hover-color: rgba(134, 156, 237, 0.51);
+  --delete: #f59595;
+  --delete-hover: #ff6a6a;
 }
 
 * {
   box-sizing: border-box;
-}
-
-html {
-}
-
-body {
 }

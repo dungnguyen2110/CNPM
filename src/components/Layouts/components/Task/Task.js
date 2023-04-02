@@ -18,7 +18,7 @@ function Task() {
               <div className={styles.Khuvuc}>B</div>
             </div>
             <div className={styles.ToolInfo}>
-              <div className={styles.ToolLabel}>Sức chứa trooler:</div>
+              <div className={styles.ToolLabel}>Sức chứa troller:</div>
               <div className={styles.ToolName}>100</div>
             </div>
           </div>

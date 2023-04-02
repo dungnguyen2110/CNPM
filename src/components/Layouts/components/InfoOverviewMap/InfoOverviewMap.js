@@ -1,6 +1,7 @@
 import styles from "./InfoOverviewMap.module.scss";
 import HeaderTable from "../HeaderTable";
-// import Task from "../Task";
+import { Link } from "react-router-dom";
+
 function InfoOverviewMap() {
   return (
     <div className={styles.InfoOverview__Employee}>
@@ -10,7 +11,11 @@ function InfoOverviewMap() {
         <div className={styles.LocationInfo}>
           Bản đồ biểu thị các vùng làm viêc
         </div>
-        <div className={styles.Map__vung}></div>
+        <Link
+          to="./detail"
+          className={styles.Map__vung}
+          style={{ backgroundColor: "green" }}
+        ></Link>
       </div>
     </div>
   );
