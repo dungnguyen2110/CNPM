@@ -7,3 +7,7 @@ src/route chứa các đường dẫn, ví dụ /employee thì nó sẽ lấy pa
 
 
 Tạo thêm trang mới thì vào page tạo thư mục đó và vào route tạo đường dẫn
+
+Tạo thêm quả nút link tới '/tasks' ở page home là oke nút đó tên là Giao việc, tạo việc, hay lên lịch gì gì đó.
+test: run -> http://localhost:3000/tasks 
+hơn 60% rồi :>
