@@ -1,19 +1,72 @@
 {
-    "employees": [
-      {
-        "id": 1,
-        "name": "John Doe",
-        "position": "Software Engineer"
-      },
-      {
-        "id": 2,
-        "name": "Jane Doe",
-        "position": "Product Manager"
-      },
-      {
-        "id": 3,
-        "name": "Bob Johnson",
-        "position": "Marketing Coordinator"
-      }
-    ]
-  }
+  "tasks": [
+    {
+      "id": 1,
+      "employees": "A",
+      "date": "2022-02-02",
+      "time": "13:13:13",
+      "position": true,
+      "img": "./images/map1",
+      "distance": "30"
+    },
+    {
+      "id": 2,
+      "employees": "B",
+      "date": "2022-02-02",
+      "time": "13:13:13",
+      "position": true,
+      "img": "./images/map1",
+      "distance": "30"
+    },
+    {
+      "id": 3,
+      "employees": "V",
+      "date": "2022-02-02",
+      "time": "13:13:13",
+      "position": true,
+      "img": "./images/map1",
+      "distance": "30"
+    },
+    {
+      "id": 4,
+      "employees": "C",
+      "date": "2022-02-02",
+      "time": "13:13:13",
+      "position": true,
+      "img": "./images/map1",
+      "distance": "30"
+    },
+    {
+      "id": 5,
+      "employees": "X",
+      "date": "2022-02-02",
+      "time": "13:13:13",
+      "position": true,
+      "img": "./images/map1",
+      "distance": "30"
+    }
+  ],
+  "area": [
+    {
+      "name": "Khu vực 1",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
+    },
+    {
+      "name": "Khu vực 2",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
+    },
+    {
+      "name": "Khu vực 3",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
+    }
+  ]
+}
