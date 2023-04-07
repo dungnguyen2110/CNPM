@@ -6,7 +6,6 @@ import Test from "./components/TaskAssignment/Test";
 import AddTask from "./components/TaskAssignment/AddTask";
 import EditTask from "./components/TaskAssignment/EditTask";
 import InfoTask from "./components/TaskAssignment/InfoTask";
-import handleUpdateData from "./components/TaskAssignment/updateData";
 import { useState } from "react";
 let dataInit = require('./data.json')
 
