@@ -3,46 +3,51 @@
     {
       "id": 1,
       "employees": "A",
-      "date": "2022-02-02",
+      "date": "2222-02-02",
       "time": "13:13:13",
       "position": true,
       "img": "./images/map1",
+      "area": "Khu vực 1",
       "distance": "30"
     },
     {
       "id": 2,
       "employees": "B",
-      "date": "2022-02-02",
+      "date": "2222-02-02",
       "time": "13:13:13",
       "position": true,
       "img": "./images/map1",
+      "area": "Khu vực 1",
       "distance": "30"
     },
     {
       "id": 3,
       "employees": "V",
-      "date": "2022-02-02",
-      "time": "13:13:13",
+      "date": "2222-02-02",
+      "time": "13:00:13",
       "position": true,
       "img": "./images/map1",
+      "area": "Khu vực 1",
       "distance": "30"
     },
     {
       "id": 4,
       "employees": "C",
-      "date": "2022-02-02",
-      "time": "13:13:13",
+      "date": "2222-02-02",
+      "time": "15:13:13",
       "position": true,
       "img": "./images/map1",
+      "area": "Khu vực 1",
       "distance": "30"
     },
     {
       "id": 5,
       "employees": "X",
       "date": "2022-02-02",
-      "time": "13:13:13",
+      "time": "16:13:13",
       "position": true,
       "img": "./images/map1",
+      "area": "Khu vực 1",
       "distance": "30"
     }
   ],
@@ -67,6 +72,36 @@
       "totalRecycle": 30,
       "avgGarbage": 12,
       "speed": 10
+    },
+    {
+      "name": "Khu vực 4",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
+    },
+    {
+      "name": "Khu vực 5",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
+    },
+    {
+      "name": "Khu vực 6",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10
     }
+  ],
+  "employees": [
+    { "name": "A" },
+    { "name": "R" },
+    { "name": "Z" },
+    { "name": "B" },
+    { "name": "N" },
+    { "name": "M" },
+    { "name": "X" }
   ]
 }

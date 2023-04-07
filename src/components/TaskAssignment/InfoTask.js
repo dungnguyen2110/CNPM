@@ -3,20 +3,27 @@ import "../TaskAssignment/infotask.scss";
 import { Link } from "react-router-dom";
 
 export default function InfoTask(props) {
-    
-  const obj = {
-    area: "Khu vực 1",
-    employee: "A",
-    date: "2022-12-12",
-    time: "14:00:00",
-    img: "../"
-  };
-  const infoArea = {
-    curRecycle: 15,
-    totalRecycle: 30,
-    avgGarbage: 5,
-    speed: 12,
-  };
+  const {data, index ,updatedata, setIndex} = props;
+  console.log( data);
+  console.log(  data[index]);
+  let obj = data.tasks[index]
+    || {
+        area: "Khu vực 1",
+        employees: "A",
+        date: "1999-12-12",
+        time: "14:00:00",
+        img: "../",
+      };
+  if ( data)
+    obj = { ...obj, area:  data.area[ index].name };
+  const infoArea =  data
+    ?  data.area[ index]
+    : {
+        curRecycle: 15,
+        totalRecycle: 30,
+        avgGarbage: 5,
+        speed: 12,
+      };
 
   return (
     <div className="main-info">
@@ -29,7 +36,7 @@ export default function InfoTask(props) {
             <label for="my-select">Khu vực:</label>
             <input type="text" value={obj.area} />
             <label for="my-select">Nhân viên:</label>
-            <input id="my-select" value={obj.employee} />
+            <input id="my-select" value={obj.employees} />
             <label for="my-select">Ngày:</label>
             <input type="date" value={obj.date} />
             <label for="my-select">Giờ:</label>

@@ -2,18 +2,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routesUWC } from "../src/routes";
 import { DefaultLayout } from "../src/components/Layouts";
 import HomeTA from "./components/TaskAssignment/HomeTA";
-import Test from "./components/TaskAssignment/Test";
 import AddTask from "./components/TaskAssignment/AddTask";
 import EditTask from "./components/TaskAssignment/EditTask";
 import InfoTask from "./components/TaskAssignment/InfoTask";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 let dataInit = require('./data.json')
 
 function App() {
   const [data,setData]=useState(dataInit)
-  const updatedData =(newData)=>{
+  const updatedData = useCallback((newData)=>{
     setData(newData)
+  },[setData])
+  //cái route [...] nên sài biến không trong path luôn.
+  const [index,upIndex]=useState(0)
+  const setIndex=(x)=>{
+    upIndex(x)
   }
+  console.log(data)
   return (
     <BrowserRouter>
       <div className="App">
@@ -33,10 +38,10 @@ function App() {
               />
             );
           })}
-          <Route path="/tasks" element={<HomeTA data={data} undatedata={updatedData}/>}/>
-          <Route path="/addtask" element={<AddTask  data={data} undatedata={updatedData}/>}/>
-          <Route path="/edittask" element={<EditTask data={data} undatedata={updatedData}/>}/>
-          <Route path="/infotask" element={<InfoTask data={data} undatedata={updatedData}/>}/>
+          <Route path="/tasks" element={<HomeTA data={data} updatedData={updatedData}      setIndex={setIndex} index={index}/>}/>
+          <Route path="/addtask" element={<AddTask  data={data} updatedData={updatedData}  setIndex={setIndex} index={index}/>}/>
+          <Route path="/edittask" element={<EditTask data={data} updatedData={updatedData} setIndex={setIndex} index={index}/>}/>
+          <Route path="/infotask" element={<InfoTask data={data} updatedData={updatedData} setIndex={setIndex} index={index}/>}/>
         </Routes>
 
       </div>
