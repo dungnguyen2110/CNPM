@@ -1,24 +1,26 @@
 import React from "react";
-import '../TaskAssignment/addtask.scss'
+import '../TaskAssignment/infotask.scss'
 import { Link } from "react-router-dom";
 
-export default function AddTask(){
+export default function InfoTask(){
+    const obj={
+        area: "Khu vực 1",
+        employee: "A",
+        date: "2022-12-12",
+        time: "14:00:00"
+    }
     const infoArea = {
         curRecycle: 15,
         totalRecycle: 30,
         avgGarbage: 5,
         speed: 12
     }
-    const selectValue={
-        area: ["Khu vực 1", "Khu vực 2", "Khu vực 3"],
-        employees: ["A", "B", "C", "D", "E"]
-    }
 
     return(
         <div className="main-add">
             <div className="main-table">
                 <div className="title">
-                    <p>Tạo nhiệm vụ</p>
+                    <p>Thông tin nhiệm vụ</p>
                 </div>
                 <div className="content">
                     <div className="left">
@@ -38,32 +40,23 @@ export default function AddTask(){
                             </li>
                         </ul>
                     </div>  
+                    {/* <div className="mid">
+
+                    </div> */}
                     <div className="right">
                         <label for="my-select">Khu vực:</label>
-                        <select id="my-select" name="my-select" defaultValue="Chọn khu vực">
-                            <option value={""}>-- Chọn khu vực --</option>
-                            {selectValue.area.map(value => 
-                                <option value={value}>{value}</option>)
-                            }
-                        </select>
+                            <input type="text" value={obj.area} />
                         <label for="my-select">Nhân viên:</label>
-                        <select id="my-select" name="my-select">
-                            
-                            <option value={""}>-- Chọn nhân viên --</option>
-                            {selectValue.employees.map(value => 
-                            <option value={value}>{value}</option>)
-                            }
-                        </select>
+                            <input id="my-select" value={obj.employee}/>
                         <label for="my-select">Ngày:</label>
-                        <input type="date" />
+                            <input type="date" value={obj.date}/>
                         <label for="my-select">Giờ:</label>
-                        <input type="time" />
+                            <input type="time" value={obj.time} />
                     </div> 
                 </div>
                 <div className="control">
                     <div className="container">
-                    <Link to='/tasks'><button className="b1">Hủy</button></Link>
-                    <Link to='/tasks'><button className="b2">Lưu</button></Link>
+                    <Link to='/tasks'><button className="b1">Trở về</button></Link>
                     </div>
                 </div>
             </div>

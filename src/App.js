@@ -4,6 +4,8 @@ import { DefaultLayout } from "../src/components/Layouts";
 import HomeTA from "./components/TaskAssignment/HomeTA";
 import Test from "./components/TaskAssignment/Test";
 import AddTask from "./components/TaskAssignment/AddTask";
+import EditTask from "./components/TaskAssignment/EditTask";
+import InfoTask from "./components/TaskAssignment/InfoTask";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           })}
           <Route path="/tasks" element={<HomeTA/>}/>
           <Route path="/addtask" element={<AddTask/>}/>
+          <Route path="/edittask" element={<EditTask/>}/>
+          <Route path="/infotask" element={<InfoTask/>}/>
           <Route path="/task" element={<Test/>}/>
         </Routes>
 

@@ -1,4 +1,4 @@
-.main-add {
+.main-edit {
   position: absolute;
   width: 96%;
   height: 570px;
@@ -33,18 +33,22 @@
       width: 100%;
       height: 50%;
       .left {
-        width: 35%;
+        width: 26%;
         padding-left: 4%;
         p {
+          margin: 0;
           margin-top: 30px;
-          font-size: 18px;
+          font-size: 22px;
         }
         ul {
           margin: 0;
+          padding: 0;
           list-style-type: none;
           li {
+            margin: 0;
+            padding: 0;
             p {
-                font-size: 18px;
+              font-size: 16px;
               margin-bottom: 5px;
             }
             margin: 0;
@@ -53,27 +57,65 @@
           }
         }
       }
-      .right {
-        width: 40%;
+      .mid{
+        width: 30%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         padding-right: 4%;
+        p{
+          width: 100%;
+          text-align: center;
+          font-size: 22px;
+        }
         label {
-            font-size: 18px;
+          font-size: 18px;
           margin: 0;
           width: 30%;
         }
         select {
-            font-size: 18px;
+          font-size: 18px;
           background: #edebc1;
           border: 1px solid #000000;
           margin: 0;
           width: 60%;
         }
         input {
-            font-size: 18px;
+          font-size: 18px;
+          background: #edebc1;
+          border: 1px solid #000000;
+          margin: 0;
+          width: 60%;
+        }
+
+      }
+      .right {
+        width: 30%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 4%;
+        p{
+          width: 100%;
+          text-align: center;
+          font-size: 22px;
+        }
+        label {
+          font-size: 18px;
+          margin: 0;
+          width: 30%;
+        }
+        select {
+          font-size: 18px;
+          background: #edebc1;
+          border: 1px solid #000000;
+          margin: 0;
+          width: 60%;
+        }
+        input {
+          font-size: 18px;
           background: #edebc1;
           border: 1px solid #000000;
           margin: 0;
@@ -112,6 +154,7 @@
           }
         }
       }
+
     }
   }
 }

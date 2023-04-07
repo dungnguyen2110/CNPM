@@ -15,7 +15,12 @@ export default function HomeTA(){
         {employees: "D", time: "2023-04-04", distance: 30}
     ]);
 
-
+    const handleDelete = (x) => {
+        let temp=[...taskslist]
+        temp.splice(x, 1);
+        setTasklist(temp);
+      }
+      
     return(
         <div className="main-hometa">
             <div className="main-table">
@@ -32,7 +37,7 @@ export default function HomeTA(){
                 <div className="taskslist">
                     {taskslist.length > 0 ?
                         <div className="taskline">
-                            {taskslist.map(task=>(
+                            {taskslist.map((task,index)=>(
                                 <div className="task">
                                     <div className="textintaskkk">
                                         <p>Người thu gom: {task.employees}</p>    
@@ -40,9 +45,13 @@ export default function HomeTA(){
                                         <p>Quãng đường: {task.distance}</p>
                                     </div>
                                     <div className="buttonintaskkk">
-                                        <button className="Edit">Xem thông tin</button> 
+                                        <Link to='/infotask'> 
+                                        <button className="Edit" >Xem thông tin</button> 
+                                        </Link>
+                                        <Link to='/edittask'> 
                                         <button className="Edit">Chỉnh sửa</button> 
-                                        <button className="Delete">Xóa</button> 
+                                        </Link>
+                                        <button className="Delete" value={index} onClick={(e)=>{handleDelete(e.currentTarget.getAttribute('value'))}}>Xóa</button> 
                                     </div>
 
                                 </div>
