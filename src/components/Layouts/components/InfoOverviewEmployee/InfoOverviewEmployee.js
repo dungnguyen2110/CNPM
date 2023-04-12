@@ -7,23 +7,22 @@ import Search from "../Search";
 
 export function InfoOverviewEmployee() {
   const emps = [
-    { Role: "Quét rác", Name: "Phạm Quang B", Code: "0001" },
-    { Role: "Thu gom rác", Name: "Nguyễn Văn A", Code: "0002" },
+    { Role: "Thu gom rác", Name: "Nguyễn Văn A", Code: "0001" },
+    { Role: "Quét rác", Name: "Phạm Quang B", Code: "0002" },
     { Role: "Quét rác", Name: "Lê Văn C", Code: "0003" },
     { Role: "Thu gom rác", Name: "Lê Văn D", Code: "0004" },
-    { Role: "Quét rác", Name: "Alexander", Code: "0005" },
-    { Role: "Thu gom rác", Name: "Nguyễn A", Code: "0006" },
-    { Role: "Quét rác", Name: "Robert", Code: "0007" },
-    { Role: "Quét rác", Name: "Luffy", Code: "0008" },
-    { Role: "Thu gom rác", Name: "Zoro", Code: "0009" },
-    // { Role: "Quét rác", Name: "Ussop", Code: "0010" },
-    // { Role: "Quét rác", Name: "Chopper", Code: "0011" },
-    // { Role: "Thu gom rác", Name: "Sanji", Code: "0012" },
-    // { Role: "Thu gom rác", Name: "Levi", Code: "0013" },
-    // { Role: "Thu gom rác", Name: "Eren", Code: "0014" },
-    // { Role: "Quét rác", Name: "Zeke", Code: "0015" },
-    // { Role: "Thu gom rác", Name: "Yasuo", Code: "0016" },
-    // { Role: "Quét rác", Name: "Leesim", Code: "0017" },
+    { Role: "Quét rác", Name: "Alexander E", Code: "0005" },
+    { Role: "Thu gom rác", Name: "Nguyễn F", Code: "0006" },
+    { Role: "Quét rác", Name: "Robert G", Code: "0007" },
+    { Role: "Quét rác", Name: "Luffy H", Code: "0008" },
+    { Role: "Thu gom rác", Name: "Zoro I", Code: "0009" },
+    { Role: "Quét rác", Name: "Ussop J", Code: "0010" },
+    { Role: "Quét rác", Name: "Chopper K", Code: "0011" },
+    { Role: "Thu gom rác", Name: "Sanji L", Code: "0012" },
+    { Role: "Thu gom rác", Name: "Levi M", Code: "0013" },
+    { Role: "Thu gom rác", Name: "Eren N", Code: "0014" },
+    { Role: "Quét rác", Name: "Zeke O", Code: "0015" },
+    { Role: "Thu gom rác", Name: "Yasuo P", Code: "0016" },
   ];
 
   const [searchResults, setSearchResults] = useState([]);
@@ -33,13 +32,15 @@ export function InfoOverviewEmployee() {
   }
 
   return (
-    <div className={styles.InfoOverview__Employee}>
+    <div className={styles.overviewContainer}>
       <HeaderTable />
 
-      <div className={styles.EmployeeOverview}>
-        <div className={styles.ActionContainer0}>
-          <div className={styles.TaskHeader}>Thanh tác vụ</div>
-          <div className={styles.Action}>
+      <div className={styles.employeeOverview}>
+        <div className={styles.action}>
+          <div className={`${styles.title} ${styles.taskHeader}`}>
+            Thanh tác vụ
+          </div>
+          <div className={styles.actionSearch}>
             <Search
               data={emps}
               handleSearchResult={handleSearchResult}
@@ -48,13 +49,13 @@ export function InfoOverviewEmployee() {
           </div>
         </div>
 
-        <div className={styles.TableSection}>
-          <div className={styles.EmployeeInfoTable}>
+        <div className={styles.tableSection}>
+          <div className={`${styles.title} ${styles.empInfoTable}`}>
             Bảng thông tin nhân viên
           </div>
-          <div className={styles.Table}>
-            <div className={styles.TableHeaderInfo}>
-              <div className={styles.Role}>
+          <div className={styles.table}>
+            <div className={styles.tableHeaderInfo}>
+              <div className={`${styles.c1} ${styles.attr} `}>
                 Chức vụ
                 <img
                   alt=""
@@ -62,7 +63,7 @@ export function InfoOverviewEmployee() {
                   src={images.sortdecrement}
                 ></img>
               </div>
-              <div className={styles.Name}>
+              <div className={`${styles.c2} ${styles.attr} `}>
                 Họ và tên
                 <img
                   alt=""
@@ -70,7 +71,7 @@ export function InfoOverviewEmployee() {
                   src={images.sortdecrement}
                 ></img>
               </div>
-              <div className={styles.Code}>
+              <div className={`${styles.c3} ${styles.attr} `}>
                 Mã nhân viên
                 <img
                   alt=""
@@ -79,12 +80,18 @@ export function InfoOverviewEmployee() {
                 ></img>
               </div>
             </div>
-            <div className={styles.TableItemContainer}>
+            <div className={styles.tableItemContainer}>
               {searchResults.map((emp, index) => (
-                <div key={index} className={styles.TableInfoItem}>
-                  <div className={styles.Role}>{emp.Role}</div>
-                  <div className={styles.Name}>{emp.Name}</div>
-                  <div className={styles.Code}>{emp.Code}</div>
+                <div key={index} className={styles.tableInfoItem}>
+                  <div className={`${styles.c1} ${styles.attr} `}>
+                    {emp.Role}
+                  </div>
+                  <div className={`${styles.c2} ${styles.attr} `}>
+                    {emp.Name}
+                  </div>
+                  <div className={`${styles.c3} ${styles.attr} `}>
+                    {emp.Code}
+                  </div>
                   <Link to={"/employee/detail"} className={styles.viewInfo}>
                     Xem thông tin
                   </Link>

@@ -1,7 +1,7 @@
 import TaskJanitor from "../../components/Layouts/components/TaskJanitor";
 
-function TJanitor() {
-  return <TaskJanitor></TaskJanitor>;
+function TJanitor(props) {
+  return <TaskJanitor {...props}></TaskJanitor>;
 }
 
 export default TJanitor;

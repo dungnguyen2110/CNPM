@@ -3,6 +3,7 @@ import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
 
+//Hàm hiển thị tên khu vực + diện tích
 function locationInfo(nameLocation, area) {
   return (
     <div className={styles.locationInfo}>
@@ -21,6 +22,7 @@ function locationInfo(nameLocation, area) {
   );
 }
 
+//Hàm hiển thị thông tin nhân viên làm việc tại khu vực
 function taskItem(name, time) {
   return (
     <div className={styles.taskItem}>
@@ -51,6 +53,7 @@ function taskItem(name, time) {
   );
 }
 
+//Hàm hiển thị thông tin nhân viên
 function janitorInfo(attr, value) {
   return (
     <div className={styles.janitorInfo}>
@@ -60,22 +63,31 @@ function janitorInfo(attr, value) {
   );
 }
 
-function MDetail() {
-  const taskItems = [
-    taskItem("A", "7:30 - 9"),
-    taskItem("A", "7:30 - 10"),
-    taskItem("A", "7:30 - 9"),
-    taskItem("A", "7:30 - 9"),
-    taskItem("A", "7:30 - 11"),
-    taskItem("A", "7:30 - 9"),
-    taskItem("A", "7:30 - 9"),
-  ];
+export default function TJanitor(props) {
+  const { data } = props;
+
+  // Lấy tên, diện tích khu vực
+  const nameLocation = data.area[0].name;
+  const areaLocation = data.area[0].area;
+
+  //Lấy thông tin nhiệm vụ
+  const tasks = data.tasks;
+
+  //Trùng tên khu vực thì lưu last name + time của nhân viên
+  const taskItems = [];
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].area === nameLocation) {
+      taskItems.push(taskItem(tasks[i].employees, tasks[i].time[0]));
+    }
+  }
+  //Lấy thông tin cụ thể nhân viên
+  const infoEmp = data.employees[0];
 
   return (
     <div>
       <HeaderTable />
       <div className={styles.container}>
-        {locationInfo("C", "2000m^2")}
+        {locationInfo(nameLocation, areaLocation + " m^2")}
 
         <div className={styles.locationContainer}>
           <div className={styles.locationTask}>
@@ -109,11 +121,11 @@ function MDetail() {
             <div className={styles.infoEmp}>
               <div className={styles.imgEmp}></div>
               <div className={styles.infoDetail}>
-                {janitorInfo("Họ và tên", "A")}
-                {janitorInfo("Mã nhân viên", 1539)}
-                {janitorInfo("CCCD", 123456789)}
-                {janitorInfo("Tuổi", 30)}
-                {janitorInfo("Chức vụ", "Người quét rác/thu gom")}
+                {janitorInfo("Họ và tên", infoEmp.name)}
+                {janitorInfo("Mã nhân viên", infoEmp.code)}
+                {janitorInfo("CCCD", infoEmp.cccd)}
+                {janitorInfo("Tuổi", infoEmp.age)}
+                {janitorInfo("Chức vụ", infoEmp.role)}
                 <Link to="#" className={styles.schedule}>
                   <img
                     className={styles.pdr10}
@@ -131,4 +143,4 @@ function MDetail() {
   );
 }
 
-export default MDetail;
+// export default TJanitor;

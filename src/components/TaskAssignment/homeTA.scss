@@ -74,23 +74,22 @@
           flex-direction: row;
           flex-wrap: wrap;
           border: 1px solid #000000;
-          justify-content: end;
+          justify-content: flex-end;
           margin: 2% 0;
           // width: 100%;
           border-radius: 10px;
-          .textintaskkk{
-            width:63%;
+          .textintaskkk {
+            width: 63%;
             margin: 3px 0;
             display: flex;
             flex-direction: column;
-            
           }
-          .buttonintaskkk{
+          .buttonintaskkk {
             width: 35%;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            button{
+            button {
               width: 80%;
               cursor: pointer;
               font-size: 14px;
@@ -106,6 +105,6 @@
   }
 }
 
-p{
+p {
   margin: 5px;
 }

@@ -6,6 +6,9 @@ const images = {
   addicon: require("./add.png"),
   arrowback: require("./arrowback.png"),
   schedule: require("./schedule.png"),
+  search: require("./search.png"),
+  task: require("./task.png"),
+  contact: require("./contact.png"),
 };
 
 export default images;

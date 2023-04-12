@@ -1,7 +1,7 @@
 import InfoOverviewEmployeeDetail from "../../components/Layouts/components/InfoOverviewEmployeeDetail";
 
-function EDetail() {
-  return <InfoOverviewEmployeeDetail></InfoOverviewEmployeeDetail>;
+function EDetail(props) {
+  return <InfoOverviewEmployeeDetail {...props}></InfoOverviewEmployeeDetail>;
 }
 
 export default EDetail;

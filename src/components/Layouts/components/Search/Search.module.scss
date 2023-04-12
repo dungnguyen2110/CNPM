@@ -1,10 +1,33 @@
-.SearchInput {
+.search {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
   width: 60%;
   height: 50px;
   background: var(--khuvuc-color);
-  border: 3px solid #000000;
-  border-radius: 30px;
+  border: 3px solid #000;
+  border-radius: 30px 30px 30px 30px;
+  border-right: none;
+}
+
+.iconSearch {
+  padding-left: 10px;
+}
+
+.searchInput {
+  font-size: 15px;
+  height: 50px;
+  width: 100%;
+  padding: 0 15px;
+  margin-left: 10px;
+  border: 3px solid #000;
+  border-radius: 0 30px 30px 0;
+  background: var(--khuvuc-color);
+}
+
+.searchInput:focus {
+  background: var(--white-color);
+}
+
+input {
+  outline: none;
 }

@@ -4,7 +4,7 @@
       "id": 1,
       "employees": "A",
       "date": "2222-02-02",
-      "time": "13:13:13",
+      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
       "area": "Khu vực 1",
@@ -14,7 +14,7 @@
       "id": 2,
       "employees": "B",
       "date": "2222-02-02",
-      "time": "13:13:13",
+      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
       "area": "Khu vực 1",
@@ -22,9 +22,9 @@
     },
     {
       "id": 3,
-      "employees": "V",
+      "employees": "C",
       "date": "2222-02-02",
-      "time": "13:00:13",
+      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
       "area": "Khu vực 1",
@@ -32,9 +32,9 @@
     },
     {
       "id": 4,
-      "employees": "C",
+      "employees": "D",
       "date": "2222-02-02",
-      "time": "15:13:13",
+      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
       "area": "Khu vực 1",
@@ -42,9 +42,9 @@
     },
     {
       "id": 5,
-      "employees": "X",
+      "employees": "E",
       "date": "2022-02-02",
-      "time": "16:13:13",
+      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
       "area": "Khu vực 1",
@@ -54,54 +54,177 @@
   "area": [
     {
       "name": "Khu vực 1",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     },
     {
       "name": "Khu vực 2",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     },
     {
       "name": "Khu vực 3",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     },
     {
       "name": "Khu vực 4",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     },
     {
       "name": "Khu vực 5",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     },
     {
       "name": "Khu vực 6",
+      "nameRegion": "Vùng A",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
-      "speed": 10
+      "speed": 10,
+      "trollercapacity": 500,
+      "area": 2000
     }
   ],
   "employees": [
-    { "name": "A" },
-    { "name": "R" },
-    { "name": "Z" },
-    { "name": "B" },
-    { "name": "N" },
-    { "name": "M" },
-    { "name": "X" }
+    {
+      "name": "Nguyễn Văn A",
+      "code": 1001,
+      "cccd": 123456701,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Phạm Quang B",
+      "code": 1002,
+      "cccd": 123456702,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Lê Văn C",
+      "code": 1003,
+      "cccd": 123456703,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Lê Văn D",
+      "code": 1004,
+      "cccd": 123456704,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Alexander E",
+      "code": 1005,
+      "cccd": 123456705,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Nguyễn F",
+      "code": 1006,
+      "cccd": 123456706,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Robert G",
+      "code": 1007,
+      "cccd": 123456707,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Luffy H",
+      "code": 1008,
+      "cccd": 123456708,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Zoro I",
+      "code": 1009,
+      "cccd": 123456709,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Ussop J",
+      "code": 1010,
+      "cccd": 123456710,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Chopper K",
+      "code": 1011,
+      "cccd": 123456711,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Sanji L",
+      "code": 1012,
+      "cccd": 123456712,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Levi M",
+      "code": 1013,
+      "cccd": 123456713,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Eren N",
+      "code": 1014,
+      "cccd": 123456714,
+      "age": 30,
+      "role": "Người quét rác"
+    },
+    {
+      "name": "Zeke O",
+      "code": 1015,
+      "cccd": 123456715,
+      "age": 30,
+      "role": "Người thu gom"
+    },
+    {
+      "name": "Yasuo P",
+      "code": 1016,
+      "cccd": 123456716,
+      "age": 30,
+      "role": "Người thu gom"
+    }
   ]
 }

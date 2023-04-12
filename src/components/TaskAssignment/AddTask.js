@@ -14,16 +14,16 @@ export default function AddTask(props) {
       };
 
   const employeessss = props.data.employees;
-  const employees = props.data
-    ? props.data.tasks.map((item) => item.employees)
-    : [];
-  const area = props.data ? props.data.area.map((item) => item.name) : [];
+  // const employees = props.data
+  //   ? props.data.tasks.map((item) => item.employees)
+  //   : [];
+  // const area = props.data ? props.data.area.map((item) => item.name) : [];
   //   console.log(area);
   //   console.log(employees);
-  const selectValue = {
-    area: area,
-    employees: employees,
-  };
+  // const selectValue = {
+  //   area: area,
+  //   employees: employees,
+  // };
 
   const uaalo = (event) => {
     // event.preventDefault();

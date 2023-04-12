@@ -3,21 +3,20 @@ import "../TaskAssignment/infotask.scss";
 import { Link } from "react-router-dom";
 
 export default function InfoTask(props) {
-  const {data, index ,updatedata, setIndex} = props;
-  console.log( data);
-  console.log(  data[index]);
-  let obj = data.tasks[index]
-    || {
-        area: "Khu vực 1",
-        employees: "A",
-        date: "1999-12-12",
-        time: "14:00:00",
-        img: "../",
-      };
-  if ( data)
-    obj = { ...obj, area:  data.area[ index].name };
-  const infoArea =  data
-    ?  data.area[ index]
+  const { data, index, updatedata, setIndex } = props;
+  console.log(updatedata, setIndex);
+  console.log(data);
+  console.log(data[index]);
+  let obj = data.tasks[index] || {
+    area: "Khu vực 1",
+    employees: "A",
+    date: "1999-12-12",
+    time: "14:00:00",
+    img: "../",
+  };
+  if (data) obj = { ...obj, area: data.area[index].name };
+  const infoArea = data
+    ? data.area[index]
     : {
         curRecycle: 15,
         totalRecycle: 30,

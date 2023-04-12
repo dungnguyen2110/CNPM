@@ -6,44 +6,103 @@ import AddTask from "./components/TaskAssignment/AddTask";
 import EditTask from "./components/TaskAssignment/EditTask";
 import InfoTask from "./components/TaskAssignment/InfoTask";
 import { useState, useCallback } from "react";
-let dataInit = require('./data.json')
-
+let dataInit = require("./data.json");
 function App() {
-  const [data,setData]=useState(dataInit)
-  const updatedData = useCallback((newData)=>{
-    setData(newData)
-  },[setData])
+  const [data, setData] = useState(dataInit);
+  const updatedData = useCallback(
+    (newData) => {
+      setData(newData);
+    },
+    [setData]
+  );
   //cái route [...] nên sài biến không trong path luôn.
-  const [index,upIndex]=useState(0)
-  const setIndex=(x)=>{
-    upIndex(x)
-  }
-  console.log(data)
+  const [index, upIndex] = useState(0);
+  const setIndex = (x) => {
+    upIndex(x);
+  };
+  // console.log(data, updatedData, setIndex, index);
+  // console.log("--------------");
+  let Layout = DefaultLayout;
+
+  // console.log(routesUWC);
+
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          {routesUWC.map((route, index) => {
+          {routesUWC.map((route, index1) => {
             const Page = route.component;
-            let Layout = DefaultLayout;
+            // console.log(Page);
+            // console.log("test");
+            // console.log(HomeTA);
+
+            // let Layout = DefaultLayout;
             return (
               <Route
-                key={index}
+                key={index1}
                 path={route.path}
                 element={
                   <Layout>
-                    <Page />
+                    <Page
+                      data={data}
+                      updatedData={updatedData}
+                      setIndex={setIndex}
+                      index={index}
+                    />
                   </Layout>
                 }
               />
             );
           })}
-          <Route path="/tasks" element={<HomeTA data={data} updatedData={updatedData}      setIndex={setIndex} index={index}/>}/>
-          <Route path="/addtask" element={<AddTask  data={data} updatedData={updatedData}  setIndex={setIndex} index={index}/>}/>
-          <Route path="/edittask" element={<EditTask data={data} updatedData={updatedData} setIndex={setIndex} index={index}/>}/>
-          <Route path="/infotask" element={<InfoTask data={data} updatedData={updatedData} setIndex={setIndex} index={index}/>}/>
-        </Routes>
 
+          <Route
+            path="/tasks"
+            element={
+              <Layout>
+                <HomeTA
+                  data={data}
+                  updatedData={updatedData}
+                  setIndex={setIndex}
+                  index={index}
+                />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/addtask"
+            element={
+              <AddTask
+                data={data}
+                updatedData={updatedData}
+                setIndex={setIndex}
+                index={index}
+              />
+            }
+          />
+          <Route
+            path="/edittask"
+            element={
+              <EditTask
+                data={data}
+                updatedData={updatedData}
+                setIndex={setIndex}
+                index={index}
+              />
+            }
+          />
+          <Route
+            path="/infotask"
+            element={
+              <InfoTask
+                data={data}
+                updatedData={updatedData}
+                setIndex={setIndex}
+                index={index}
+              />
+            }
+          />
+        </Routes>
       </div>
     </BrowserRouter>
   );

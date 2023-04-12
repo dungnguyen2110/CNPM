@@ -34,10 +34,10 @@ export default function EditTask(props) {
 
   const rangmadoc = props.data.area;
 
-  const selectValue = {
-    area: ["Khu vực 1", "Khu vực 2", "Khu vực 3"],
-    employees: ["A", "B", "C", "D", "E"],
-  };
+  // const selectValue = {
+  //   area: ["Khu vực 1", "Khu vực 2", "Khu vực 3"],
+  //   employees: ["A", "B", "C", "D", "E"],
+  // };
 
   return (
     <div className="main-edit">

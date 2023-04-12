@@ -5,12 +5,12 @@ import images from "../../../../assets/images";
 
 function HeaderTable() {
   return (
-    <div className={styles.InfoCategory__container}>
-      <div className={styles.Infomation__category}>
+    <div className={styles.headerContainer}>
+      <div className={styles.headerContent}>
         <NavLink
           to="/map"
           className={({ isActive }) =>
-            `${isActive ? styles.active : ""} ${styles.table__btn}`
+            `${styles.tableBtn}  ${isActive ? styles.map : styles.buttonHover}`
           }
         >
           <img className={styles.img} src={images.mapmarker} alt="Bản đồ"></img>
@@ -19,7 +19,9 @@ function HeaderTable() {
         <NavLink
           to="/employee"
           className={({ isActive }) =>
-            `${isActive ? styles.active : ""} ${styles.last__table__btn}`
+            `${isActive ? styles.emp : styles.buttonHover} ${styles.tableBtn} ${
+              styles.lastBtn
+            }`
           }
         >
           <img className={styles.img} src={images.staff} alt="Nhân viên"></img>

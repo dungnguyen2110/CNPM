@@ -1,194 +1,116 @@
-:root {
-  --khuvuc-color: #efecec;
-  --employee-color: rgba(134, 156, 237, 0.32);
-  --white: #fef9f9;
-}
-
-.InfoOverview__Employee {
+.overviewContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
+}
+
+.employeeOverview {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid #000;
+  border-top: none;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.action {
+  width: 40%;
   height: 550px;
+  border-top: none;
 
-  .EmployeeOverview {
+  .actionSearch {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    padding: 20px 0;
+    height: 500px;
+    border-right: 3px solid #000;
+  }
+
+  .taskHeader {
+    background: var(--khuvuc-hover-color);
+  }
+}
+
+.attr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.c1 {
+  width: 120px;
+  background: var(--khuvuc-color);
+}
+
+.c2 {
+  width: 180px;
+  background: var(--white-color);
+}
+
+.c3 {
+  width: 180px;
+  background: var(--white-color);
+}
+
+.tableSection {
+  width: 60%;
+  .empInfoTable {
+    background: rgba(197, 194, 194, 0.28);
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 90%;
-    border: 3px solid #000;
-    border-top: none;
+    height: 500px;
 
-    .ActionContainer0 {
-      width: 40%;
-      height: 100%;
-      border-top: none;
+    .tableHeaderInfo {
+      display: flex;
+      flex-direction: row;
+      height: 10%;
+      border: 3px solid #000;
+      border-right: none;
+      border-left: none;
+      .sort {
+        padding-left: 40px;
+      }
+    }
+  }
 
-      .TaskHeader {
+  .tableItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
+
+    .tableInfoItem {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 45px;
+      border-bottom: 3px solid #000;
+
+      .viewInfo {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 10px;
-        width: 100%;
-        height: 10%;
-        background: #ded9d9;
+        width: 20%;
+        text-decoration: none;
+        color: var(--view-color);
       }
 
-      .Action {
-        display: flex;
-        justify-content: center;
-        padding: 20px 10px;
-        width: 100%;
-        height: 90%;
-        border-right: 3px solid #000;
-      }
-    }
-
-    .TableSection {
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      width: 60%;
-      height: 100%;
-
-      .EmployeeInfoTable {
-        align-items: center;
-        padding: 10px 20px;
-        width: 100%;
-        height: 10%;
-        background: rgba(197, 194, 194, 0.28);
-      }
-
-      .Table {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0px;
-        // border-bottom: none;
-        width: 100%;
-        height: 90%;
-
-        .TableHeaderInfo {
-          display: flex;
-          flex-direction: row;
-          width: 100%;
-          height: 10%;
-          border: 3px solid #000;
-          border-right: none;
-          border-left: none;
-          .sort {
-            padding-left: 15px;
-          }
-
-          .Role {
-            display: flex;
-            flex-direction: row;
-            // justify-content: flex-end;
-            align-items: center;
-            padding: 10px;
-            width: 20%;
-
-            /* khuvuc color */
-
-            background: var(--khuvuc-color);
-          }
-
-          .Name {
-            /* Auto layout */
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 10px;
-            width: 30%;
-
-            /* White */
-
-            background: #fef9f9;
-          }
-
-          .Code {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 10px;
-            width: 30%;
-
-            /* khuvuc color */
-
-            background: #efecec;
-          }
-        }
-
-        .TableItemContainer {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 0px;
-          width: 100%;
-          height: 90%;
-          // overflow-y: scroll;
-
-          .TableInfoItem {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 45px;
-            border-bottom: 3px solid #000;
-
-            .Role {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding: 10px;
-              width: 20%;
-
-              /* khuvuc color */
-
-              background: #efecec;
-            }
-
-            .Name {
-              /* Auto layout */
-
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding: 10px;
-              width: 30%;
-
-              /* White */
-
-              background: #fef9f9;
-            }
-
-            .Code {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding: 10px;
-              width: 30%;
-
-              /* khuvuc color */
-
-              background: #efecec;
-            }
-
-            .viewInfo {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding: 10px;
-              width: 20%;
-              text-decoration: none;
-              color: var(--view-color);
-            }
-
-            .viewInfo:hover {
-              filter: var(--view-hover);
-            }
-          }
-        }
+      .viewInfo:hover {
+        filter: var(--filter-hover);
       }
     }
   }

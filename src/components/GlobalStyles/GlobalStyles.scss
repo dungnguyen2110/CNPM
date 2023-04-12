@@ -1,5 +1,5 @@
 @import "normalize.css";
-
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 :root {
   --view-color: #6c8af2;
   --edit-color: #6c8af2;
@@ -16,8 +16,11 @@
   --emp-hover-color: rgba(134, 156, 237, 0.51);
   --delete: #f59595;
   --delete-hover: #ff6a6a;
+  --khuvuc-color: #efecec;
+  --khuvuc-hover-color: #ded9d9;
 }
 
 * {
   box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
 }

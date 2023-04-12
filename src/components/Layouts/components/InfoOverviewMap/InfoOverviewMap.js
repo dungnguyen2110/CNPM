@@ -7,13 +7,13 @@ function InfoOverviewMap() {
     <div className={styles.InfoOverview__Employee}>
       <HeaderTable />
 
-      <div className={styles.MapOverview}>
+      <div className={styles.mapOverview}>
         <div className={styles.LocationInfo}>
           Bản đồ biểu thị các vùng làm viêc
         </div>
         <Link
           to="./detail"
-          className={styles.Map__vung}
+          className={styles.regionMap}
           style={{ backgroundColor: "green" }}
         ></Link>
       </div>
