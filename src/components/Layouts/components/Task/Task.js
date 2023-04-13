@@ -1,5 +1,7 @@
 import styles from "./Task.module.scss";
 import images from "../../../../assets/images";
+
+//Hàm hiển thị thông tin nhiệm vụ được giao
 function taskInfo(time, region, location, tool) {
   return (
     <div className={styles.JanitorTaskInfo}>
@@ -23,7 +25,25 @@ function taskInfo(time, region, location, tool) {
 
 function Task(props) {
   const { code, data } = props;
-  console.log(code, data);
+
+  //Lấy thông tin nhiệm vụ
+  const taskEmp = [];
+  for (let i = 0; i < data.tasks.length; i++) {
+    let tasks = data.tasks[i];
+    if (tasks.code === code) {
+      for (let j = 0; j < tasks.time.length; j++) {
+        taskEmp.push(
+          taskInfo(
+            tasks.time[j],
+            tasks.region,
+            tasks.area,
+            tasks.trollercapacity + " tấn"
+          )
+        );
+      }
+    }
+  }
+
   return (
     <div className={styles.tasks}>
       <div className={styles.headerTitle}>
@@ -38,12 +58,9 @@ function Task(props) {
       </div>
       <div className={styles.taskContainer}>
         <div className={styles.taskContainer1}>
-          {taskInfo("7:30 - 10", "A", "C", 100)}
-          {taskInfo("7:30 - 10", "A", "C", 100)}
-          {taskInfo("7:30 - 10", "A", "C", 100)}
-          {taskInfo("7:30 - 10", "A", "C", 100)}
-          {taskInfo("7:30 - 10", "A", "C", 100)}
-          {taskInfo("7:30 - 10", "A", "C", 100)}
+          {taskEmp.map((element, index) => (
+            <div key={index}>{element}</div>
+          ))}
         </div>
       </div>
     </div>

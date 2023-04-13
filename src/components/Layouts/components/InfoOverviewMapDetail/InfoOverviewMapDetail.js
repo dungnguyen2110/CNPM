@@ -6,7 +6,7 @@ import images from "../../../../assets/images";
 function regionInfo(nameRegion, area) {
   return (
     <div className={styles.regionInfo}>
-      <Link to="/map/detail" className={styles.arrowback}>
+      <Link to="/map/" className={styles.arrowback}>
         <img width="40" height="30" src={images.arrowback} alt="Trở lại"></img>
       </Link>
       <div className={styles.regionInfoElement}>
@@ -27,7 +27,7 @@ function infoElement(attr, value, isLink) {
       <span>{attr}</span>
       <span>{value}</span>
       {isLink && (
-        <Link className={styles.viewInfo} to="./">
+        <Link className={styles.viewInfo} to="/employee/detail">
           Xem thông tin
         </Link>
       )}
@@ -48,11 +48,20 @@ function btnRoad(name1, class1, name2, class2) {
   );
 }
 
-function MDetail() {
+function MDetail(props) {
+  const { data } = props;
+  //Lấy thông tin vùng
+  const nameRegion = data.regions[0].name;
+  const areaRegion = data.regions[0].area;
+
+  //Lấy thông tin nhiệm vụ của Collector
+  const nameCollector = data.tasks[0].employees;
+  const time = data.tasks[0].time[0];
+  const route = data.tasks[0].route;
   const infoElements = [
-    infoElement("Người thu gom:", "A", true),
-    infoElement("Thời gian:", "7:30 - 9:00"),
-    infoElement("Chu trình:", "MCP1 -> MCP2 -> MCP3"),
+    infoElement("Người thu gom:", nameCollector, true),
+    infoElement("Thời gian:", time),
+    infoElement("Chu trình:", route),
     infoElement("Quảng đường", 20 + "km"),
   ];
 
@@ -60,7 +69,7 @@ function MDetail() {
     <div>
       <HeaderTable />
       <div className={styles.container}>
-        {regionInfo("A", "1000km^2")}
+        {regionInfo(nameRegion, areaRegion + "km^2")}
 
         <div className={styles.regionContainer}>
           <div className={styles.regionTask}>
@@ -79,23 +88,32 @@ function MDetail() {
               </div>
             ) : (
               <div className={styles.taskInfo}>
-                <div>
+                <div className={styles.infoElements}>
                   {infoElements.map((element, index) => (
                     <div key={index}>{element}</div>
                   ))}
                 </div>
+                <hr className={styles.line} />
 
+                <div>Thủ công</div>
                 {btnRoad(
-                  "Tôi ưu chu trình",
+                  "Bắt đầu",
                   styles.optimizeColor,
-                  "Chỉnh sửa chu trinh",
+                  "Xác nhận",
+                  styles.editColor
+                )}
+                {btnRoad(
+                  "Chỉnh sửa",
+                  styles.optimizeColor,
+                  "Lưu",
                   styles.editColor
                 )}
 
                 <hr className={styles.line} />
+                <div>Tự động</div>
 
                 {btnRoad(
-                  "Chỉnh sửa chu trính",
+                  "Tối ưu chu trình",
                   styles.editColor,
                   "Xóa nhiệm vụ",
                   styles.deleteColor

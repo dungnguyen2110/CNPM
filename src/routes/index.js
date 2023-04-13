@@ -5,8 +5,8 @@ import MDetail from "../../src/pages/MDetail";
 import TJanitor from "../pages/TaskJanitor";
 
 const routesUWC = [
-  { path: "/employee", component: Employee },
   { path: "/", component: Employee },
+  { path: "/employee", component: Employee },
   { path: "/employee/detail", component: EDetail },
   { path: "/map", component: Map },
   { path: "/map/detail", component: MDetail },

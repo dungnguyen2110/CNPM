@@ -106,7 +106,7 @@ export default function EditTask(props) {
             <Link to="/tasks">
               <button className="b1">Hủy</button>
             </Link>
-            <Link to="/tasks">
+            <Link to="/taskjanitor">
               <button className="b2" onClick={ongke}>
                 Lưu
               </button>

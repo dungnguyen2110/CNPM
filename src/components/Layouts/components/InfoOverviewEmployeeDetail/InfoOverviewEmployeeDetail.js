@@ -4,6 +4,7 @@ import Task from "../Task";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
 
+//Hàm in ra thông tin chi tiết của 1 nhân viên
 function info(name, code, cccd, age, role) {
   return (
     <div className={styles.detailInfo}>
@@ -35,9 +36,10 @@ function info(name, code, cccd, age, role) {
   );
 }
 
-export function EDetail(props) {
+export default function EDetail(props) {
   const { data } = props;
 
+  // Lấy thông tin empployee đầu tiên
   const infoEmp = data.employees[0];
 
   return (
@@ -91,5 +93,3 @@ export function EDetail(props) {
     </div>
   );
 }
-
-export default EDetail;

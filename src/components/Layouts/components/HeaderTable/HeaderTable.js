@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import images from "../../../../assets/images";
 
-function HeaderTable() {
+export default function HeaderTable() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
@@ -31,5 +31,3 @@ function HeaderTable() {
     </div>
   );
 }
-
-export default HeaderTable;

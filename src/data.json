@@ -3,114 +3,115 @@
     {
       "id": 1,
       "employees": "A",
+      "code": 1001,
       "date": "2222-02-02",
-      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
+      "time": ["7:30-9:00", "10:00-12:00", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
-      "area": "Khu vực 1",
-      "distance": "30"
+      "area": "1",
+      "region": "Quận 1",
+      "distance": "30",
+      "route": "MCP1 -> MCP2 -> MCP3",
+      "trollercapacity": 50
     },
     {
       "id": 2,
-      "employees": "B",
-      "date": "2222-02-02",
+      "employees": "A",
+      "code": 1001,
+      "date": "2222-03-02",
       "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
-      "area": "Khu vực 1",
-      "distance": "30"
+      "area": "2",
+      "region": "Quận 1",
+      "distance": "30",
+      "trollercapacity": 100
     },
     {
       "id": 3,
       "employees": "C",
+      "code": 1003,
       "date": "2222-02-02",
       "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
-      "area": "Khu vực 1",
-      "distance": "30"
+      "area": "1",
+      "region": "Quận 1",
+      "distance": "30",
+      "trollercapacity": 50
     },
     {
       "id": 4,
       "employees": "D",
+      "code": 1004,
       "date": "2222-02-02",
       "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
-      "area": "Khu vực 1",
-      "distance": "30"
+      "area": "1",
+      "region": "Quận 1",
+      "distance": "30",
+      "trollercapacity": 400
     },
     {
       "id": 5,
       "employees": "E",
+      "code": 1005,
       "date": "2022-02-02",
       "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
       "position": true,
       "img": "./images/map1",
-      "area": "Khu vực 1",
-      "distance": "30"
+      "area": "1",
+      "region": "Quận 1",
+      "distance": "30",
+      "trollercapacity": 200
     }
   ],
   "area": [
     {
-      "name": "Khu vực 1",
-      "nameRegion": "Vùng A",
+      "name": "1",
+      "nameRegion": "Quận 1",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
       "speed": 10,
-      "trollercapacity": 500,
+      "area": 200
+    },
+    {
+      "name": "2",
+      "nameRegion": "Quận 1",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10,
+      "area": 200
+    },
+    {
+      "name": "3",
+      "nameRegion": "Quận 1",
+      "curRecycle": 14,
+      "totalRecycle": 30,
+      "avgGarbage": 12,
+      "speed": 10,
       "area": 2000
     },
     {
-      "name": "Khu vực 2",
-      "nameRegion": "Vùng A",
+      "name": "4",
+      "nameRegion": "Quận 1",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
       "speed": 10,
-      "trollercapacity": 500,
-      "area": 2000
+      "area": 200
     },
     {
-      "name": "Khu vực 3",
-      "nameRegion": "Vùng A",
+      "name": "5",
+      "nameRegion": "Quận 1",
       "curRecycle": 14,
       "totalRecycle": 30,
       "avgGarbage": 12,
       "speed": 10,
-      "trollercapacity": 500,
-      "area": 2000
-    },
-    {
-      "name": "Khu vực 4",
-      "nameRegion": "Vùng A",
-      "curRecycle": 14,
-      "totalRecycle": 30,
-      "avgGarbage": 12,
-      "speed": 10,
-      "trollercapacity": 500,
-      "area": 2000
-    },
-    {
-      "name": "Khu vực 5",
-      "nameRegion": "Vùng A",
-      "curRecycle": 14,
-      "totalRecycle": 30,
-      "avgGarbage": 12,
-      "speed": 10,
-      "trollercapacity": 500,
-      "area": 2000
-    },
-    {
-      "name": "Khu vực 6",
-      "nameRegion": "Vùng A",
-      "curRecycle": 14,
-      "totalRecycle": 30,
-      "avgGarbage": 12,
-      "speed": 10,
-      "trollercapacity": 500,
-      "area": 2000
+      "area": 200
     }
   ],
   "employees": [
@@ -119,112 +120,149 @@
       "code": 1001,
       "cccd": 123456701,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Phạm Quang B",
       "code": 1002,
       "cccd": 123456702,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Lê Văn C",
       "code": 1003,
       "cccd": 123456703,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Lê Văn D",
       "code": 1004,
       "cccd": 123456704,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Alexander E",
       "code": 1005,
       "cccd": 123456705,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Nguyễn F",
       "code": 1006,
       "cccd": 123456706,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Robert G",
       "code": 1007,
       "cccd": 123456707,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Luffy H",
       "code": 1008,
       "cccd": 123456708,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Zoro I",
       "code": 1009,
       "cccd": 123456709,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Ussop J",
       "code": 1010,
       "cccd": 123456710,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Chopper K",
       "code": 1011,
       "cccd": 123456711,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Sanji L",
       "code": 1012,
       "cccd": 123456712,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Levi M",
       "code": 1013,
       "cccd": 123456713,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Eren N",
       "code": 1014,
       "cccd": 123456714,
       "age": 30,
-      "role": "Người quét rác"
+      "role": "Quét rác"
     },
     {
       "name": "Zeke O",
       "code": 1015,
       "cccd": 123456715,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
     },
     {
       "name": "Yasuo P",
       "code": 1016,
       "cccd": 123456716,
       "age": 30,
-      "role": "Người thu gom"
+      "role": "Thu gom rác"
+    }
+  ],
+
+  "regions": [
+    {
+      "name": "Quận 1",
+      "area": 2000
+    },
+    {
+      "name": "Quận 3"
+    },
+    {
+      "name": "Quận 4"
+    },
+    {
+      "name": "Quận 5"
+    },
+    {
+      "name": "Quận 6"
+    },
+    {
+      "name": "Quận 7"
+    },
+    {
+      "name": "Quận 8"
+    },
+    {
+      "name": "Quận 10"
+    },
+    {
+      "name": "Quận 11"
+    },
+    {
+      "name": "Quận 12"
+    },
+    {
+      "name": "TP Thủ Đức"
     }
   ]
 }

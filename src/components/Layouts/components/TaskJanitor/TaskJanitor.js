@@ -2,6 +2,7 @@ import styles from "./TaskJanitor.module.scss";
 import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
+import { useState } from "react";
 
 //Hàm hiển thị tên khu vực + diện tích
 function locationInfo(nameLocation, area) {
@@ -23,7 +24,22 @@ function locationInfo(nameLocation, area) {
 }
 
 //Hàm hiển thị thông tin nhân viên làm việc tại khu vực
-function taskItem(name, time) {
+function taskItem(name, time, index, tasks, setTasks, props) {
+  const handleDelete = (x) => {
+    let temp = [...tasks];
+    temp.splice(x, 1);
+    setTasks(temp);
+    let temp2 = props.data;
+    temp2.tasks = temp;
+
+    // updated chưa hoạt động
+    // props.updatedData(temp2);
+  };
+
+  const updateIndex = (x) => {
+    props.setIndex(x);
+  };
+
   return (
     <div className={styles.taskItem}>
       <div className={styles.infoElement}>
@@ -31,7 +47,7 @@ function taskItem(name, time) {
           <span className={styles.pdr10}>Người quét rác:</span>
           <span>{name}</span>
         </div>
-        <Link to="./" className={styles.viewInfo}>
+        <Link to="/employee/detail" className={styles.viewInfo}>
           Xem thông tin
         </Link>
       </div>
@@ -41,12 +57,26 @@ function taskItem(name, time) {
           <span>{time}</span>
         </div>
         <div className={styles.btnEditDelete}>
-          <Link to="./" className={`${styles.btn} ${styles.editBtn}`}>
+          <Link
+            value={index}
+            onClick={(e) => {
+              updateIndex(e.currentTarget.getAttribute("value"));
+            }}
+            to="/edittask"
+            className={`${styles.btn} ${styles.editBtn}`}
+          >
             Chỉnh sửa
           </Link>
-          <Link to="./" className={`${styles.btn} ${styles.deleteBtn}`}>
+
+          <div
+            value={index}
+            onClick={(e) => {
+              handleDelete(e.currentTarget.getAttribute("value"));
+            }}
+            className={`${styles.btn} ${styles.deleteBtn}`}
+          >
             Xóa
-          </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -71,13 +101,22 @@ export default function TJanitor(props) {
   const areaLocation = data.area[0].area;
 
   //Lấy thông tin nhiệm vụ
-  const tasks = data.tasks;
+  const [tasks, setTasks] = useState(data.tasks);
 
   //Trùng tên khu vực thì lưu last name + time của nhân viên
   const taskItems = [];
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].area === nameLocation) {
-      taskItems.push(taskItem(tasks[i].employees, tasks[i].time[0]));
+      taskItems.push(
+        taskItem(
+          tasks[i].employees,
+          tasks[i].time[0],
+          i,
+          tasks,
+          setTasks,
+          props
+        )
+      );
     }
   }
   //Lấy thông tin cụ thể nhân viên
@@ -104,14 +143,14 @@ export default function TJanitor(props) {
                 </div>
               )}
 
-              <div className={styles.addTask}>
+              <Link to="/addtask" className={styles.addTask}>
                 <img
                   className={styles.pdr10}
                   src={images.addicon}
                   alt="Thêm nhiệm vụ"
                 ></img>
                 Thêm nhiệm vụ
-              </div>
+              </Link>
             </div>
           </div>
 

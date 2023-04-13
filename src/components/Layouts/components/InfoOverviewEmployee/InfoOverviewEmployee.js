@@ -5,25 +5,11 @@ import images from "../../../../assets/images";
 import React, { useState } from "react";
 import Search from "../Search";
 
-export function InfoOverviewEmployee() {
-  const emps = [
-    { Role: "Thu gom rác", Name: "Nguyễn Văn A", Code: "0001" },
-    { Role: "Quét rác", Name: "Phạm Quang B", Code: "0002" },
-    { Role: "Quét rác", Name: "Lê Văn C", Code: "0003" },
-    { Role: "Thu gom rác", Name: "Lê Văn D", Code: "0004" },
-    { Role: "Quét rác", Name: "Alexander E", Code: "0005" },
-    { Role: "Thu gom rác", Name: "Nguyễn F", Code: "0006" },
-    { Role: "Quét rác", Name: "Robert G", Code: "0007" },
-    { Role: "Quét rác", Name: "Luffy H", Code: "0008" },
-    { Role: "Thu gom rác", Name: "Zoro I", Code: "0009" },
-    { Role: "Quét rác", Name: "Ussop J", Code: "0010" },
-    { Role: "Quét rác", Name: "Chopper K", Code: "0011" },
-    { Role: "Thu gom rác", Name: "Sanji L", Code: "0012" },
-    { Role: "Thu gom rác", Name: "Levi M", Code: "0013" },
-    { Role: "Thu gom rác", Name: "Eren N", Code: "0014" },
-    { Role: "Quét rác", Name: "Zeke O", Code: "0015" },
-    { Role: "Thu gom rác", Name: "Yasuo P", Code: "0016" },
-  ];
+export default function InfoOverviewEmployee(props) {
+  const { data } = props;
+
+  //Lấy thông tin nhân viên
+  const emps = data.employees;
 
   const [searchResults, setSearchResults] = useState([]);
 
@@ -41,10 +27,11 @@ export function InfoOverviewEmployee() {
             Thanh tác vụ
           </div>
           <div className={styles.actionSearch}>
+            {/* Search theo name */}
             <Search
               data={emps}
               handleSearchResult={handleSearchResult}
-              field={"Name"}
+              field={"name"}
             />
           </div>
         </div>
@@ -84,15 +71,15 @@ export function InfoOverviewEmployee() {
               {searchResults.map((emp, index) => (
                 <div key={index} className={styles.tableInfoItem}>
                   <div className={`${styles.c1} ${styles.attr} `}>
-                    {emp.Role}
+                    {emp.role}
                   </div>
                   <div className={`${styles.c2} ${styles.attr} `}>
-                    {emp.Name}
+                    {emp.name}
                   </div>
                   <div className={`${styles.c3} ${styles.attr} `}>
-                    {emp.Code}
+                    {emp.code}
                   </div>
-                  <Link to={"/employee/detail"} className={styles.viewInfo}>
+                  <Link to="/employee/detail" className={styles.viewInfo}>
                     Xem thông tin
                   </Link>
                 </div>
@@ -104,5 +91,3 @@ export function InfoOverviewEmployee() {
     </div>
   );
 }
-
-export default InfoOverviewEmployee;

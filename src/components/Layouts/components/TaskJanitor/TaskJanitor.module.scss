@@ -78,6 +78,7 @@
 
       .deleteBtn:hover {
         filter: var(--filter-hover);
+        cursor: pointer;
       }
     }
   }
@@ -151,6 +152,8 @@
   border: 3px solid #000000;
   border-radius: 30px;
   cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 
 .addTask:hover {

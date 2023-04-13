@@ -20,11 +20,8 @@ function App() {
   const setIndex = (x) => {
     upIndex(x);
   };
-  // console.log(data, updatedData, setIndex, index);
-  // console.log("--------------");
-  let Layout = DefaultLayout;
 
-  // console.log(routesUWC);
+  let Layout = DefaultLayout;
 
   return (
     <BrowserRouter>
@@ -32,11 +29,7 @@ function App() {
         <Routes>
           {routesUWC.map((route, index1) => {
             const Page = route.component;
-            // console.log(Page);
-            // console.log("test");
-            // console.log(HomeTA);
 
-            // let Layout = DefaultLayout;
             return (
               <Route
                 key={index1}

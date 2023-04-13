@@ -1,24 +1,41 @@
 import styles from "./InfoOverviewMap.module.scss";
 import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
+import Search from "../Search";
+import React, { useState } from "react";
 
-function InfoOverviewMap() {
+export default function InfoOverviewMap(props) {
+  const { data } = props;
+
+  //Lấy thông tin các vùng
+  const regions = data.regions;
+  console.log(regions);
+  const [searchResults, setSearchResults] = useState([]);
+
+  function handleSearchResult(results) {
+    setSearchResults(results);
+  }
   return (
-    <div className={styles.InfoOverview__Employee}>
+    <div>
       <HeaderTable />
 
       <div className={styles.mapOverview}>
-        <div className={styles.LocationInfo}>
-          Bản đồ biểu thị các vùng làm viêc
+        <div className={`${styles.title}`}>Vùng làm việc</div>
+        <div className={styles.regions}>
+          <Search
+            data={regions}
+            handleSearchResult={handleSearchResult}
+            field={"name"}
+          />
+          <Link to="./detail" className={styles.regionsDisplay}>
+            {searchResults.map((region, index) => (
+              <div key={index} className={styles.regionElement}>
+                {region.name}
+              </div>
+            ))}
+          </Link>
         </div>
-        <Link
-          to="./detail"
-          className={styles.regionMap}
-          style={{ backgroundColor: "green" }}
-        ></Link>
       </div>
     </div>
   );
 }
-
-export default InfoOverviewMap;
