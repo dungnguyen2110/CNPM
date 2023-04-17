@@ -1,0 +1,8 @@
+Focus tphcm, khoanh vùng tphcm + giới hạn search tphcm
++khoanh vùng được vùng (quận), nhìn thấy bằng mắt, các vùng màu sắc khác nhau
+Ấn vào từng vùng (quận), view focus quận + khoanh vùng(bounding), giới hạn search trong quận
+-Thấy được các MCP, nhà máy
+-Chức năng thêm MCP, nhà máy bằng cách click vào
+-Thấy đường đi, chu trình collector 
+-Chức năng tối ưu chu trình và tùy chỉnh chu trình bằng cách click
+-Viết API trả về thông tin chu trình, khu vực được chọn (assign tasks)

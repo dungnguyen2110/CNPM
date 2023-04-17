@@ -3,6 +3,7 @@ import { routesUWC } from "../src/routes";
 import { DefaultLayout } from "../src/components/Layouts";
 import HomeTA from "./components/TaskAssignment/HomeTA";
 import AddTask from "./components/TaskAssignment/AddTask";
+import AddTaskCollector from "./components/TaskAssignment/AddTaskCollector";
 import EditTask from "./components/TaskAssignment/EditTask";
 import InfoTask from "./components/TaskAssignment/InfoTask";
 import { useState, useCallback } from "react";
@@ -74,6 +75,17 @@ function App() {
             }
           />
           <Route
+            path="/addtaskcollector"
+            element={
+              <AddTaskCollector
+                data={data}
+                updatedData={updatedData}
+                setIndex={setIndex}
+                index={index}
+              />
+            }
+          />
+          <Route
             path="/edittask"
             element={
               <EditTask
@@ -102,3 +114,11 @@ function App() {
 }
 
 export default App;
+
+// import React from "react";
+// import { DisplayMapClass } from "./DisplayMapClass";
+
+// function App() {
+//   return <DisplayMapClass />;
+// }
+// export default App;

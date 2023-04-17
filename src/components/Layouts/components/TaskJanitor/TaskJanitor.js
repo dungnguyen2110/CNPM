@@ -2,7 +2,7 @@ import styles from "./TaskJanitor.module.scss";
 import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Hàm hiển thị tên khu vực + diện tích
 function locationInfo(nameLocation, area) {
@@ -18,66 +18,6 @@ function locationInfo(nameLocation, area) {
       <div className={styles.locationInfoElement}>
         <span className={styles.pdr10}>Diện tích</span>
         <span>{area}</span>
-      </div>
-    </div>
-  );
-}
-
-//Hàm hiển thị thông tin nhân viên làm việc tại khu vực
-function taskItem(name, time, index, tasks, setTasks, props) {
-  const handleDelete = (x) => {
-    let temp = [...tasks];
-    temp.splice(x, 1);
-    setTasks(temp);
-    let temp2 = props.data;
-    temp2.tasks = temp;
-
-    // updated chưa hoạt động
-    // props.updatedData(temp2);
-  };
-
-  const updateIndex = (x) => {
-    props.setIndex(x);
-  };
-
-  return (
-    <div className={styles.taskItem}>
-      <div className={styles.infoElement}>
-        <div className={styles.infoText}>
-          <span className={styles.pdr10}>Người quét rác:</span>
-          <span>{name}</span>
-        </div>
-        <Link to="/employee/detail" className={styles.viewInfo}>
-          Xem thông tin
-        </Link>
-      </div>
-      <div className={styles.infoElement}>
-        <div className={styles.infoText}>
-          <span className={styles.pdr10}>Thời gian:</span>
-          <span>{time}</span>
-        </div>
-        <div className={styles.btnEditDelete}>
-          <Link
-            value={index}
-            onClick={(e) => {
-              updateIndex(e.currentTarget.getAttribute("value"));
-            }}
-            to="/edittask"
-            className={`${styles.btn} ${styles.editBtn}`}
-          >
-            Chỉnh sửa
-          </Link>
-
-          <div
-            value={index}
-            onClick={(e) => {
-              handleDelete(e.currentTarget.getAttribute("value"));
-            }}
-            className={`${styles.btn} ${styles.deleteBtn}`}
-          >
-            Xóa
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -102,23 +42,22 @@ export default function TJanitor(props) {
 
   //Lấy thông tin nhiệm vụ
   const [tasks, setTasks] = useState(data.tasks);
+  console.log(tasks);
+  const handleDelete = (x) => {
+    let temp = [...tasks];
+    temp.splice(x, 1);
+    setTasks(temp);
+    let temp2 = props.data;
+    temp2.tasks = temp;
 
-  //Trùng tên khu vực thì lưu last name + time của nhân viên
-  const taskItems = [];
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].area === nameLocation) {
-      taskItems.push(
-        taskItem(
-          tasks[i].employees,
-          tasks[i].time[0],
-          i,
-          tasks,
-          setTasks,
-          props
-        )
-      );
-    }
-  }
+    // updated chưa hoạt động
+    props.updatedData(temp2);
+  };
+
+  const updateIndex = (x) => {
+    props.setIndex(x);
+  };
+
   //Lấy thông tin cụ thể nhân viên
   const infoEmp = data.employees[0];
 
@@ -133,12 +72,64 @@ export default function TJanitor(props) {
             <div className={styles.headerTitle}>Thông tin nhiệm vụ</div>
 
             <div className={styles.task}>
-              {taskItems.length === 0 ? (
+              {tasks.length === 0 ? (
                 <div className={styles.mt10}>Khu vực này không có Janitor</div>
               ) : (
                 <div className={styles.taskInfo}>
-                  {taskItems.map((element, index) => (
+                  {/* {taskItems.map((element, index) => (
                     <div key={index}>{element}</div>
+                  ))} */}
+                  {tasks.map((task, index) => (
+                    <div key={index} className={styles.taskItem}>
+                      <div className={styles.infoElement}>
+                        <div className={styles.infoText}>
+                          <span className={styles.pdr10}>Người quét rác:</span>
+                          <span>{task.employees}</span>
+                        </div>
+                        <Link
+                          value={index}
+                          onClick={(e) => {
+                            updateIndex(e.currentTarget.getAttribute("value"));
+                          }}
+                          to="/infotask"
+                          className={styles.viewInfo}
+                        >
+                          Xem thông tin
+                        </Link>
+                      </div>
+                      <div className={styles.infoElement}>
+                        <div className={styles.infoText}>
+                          <span className={styles.pdr10}>Thời gian:</span>
+                          <span>{task.time[0]}</span>
+                        </div>
+                        <div className={styles.btnEditDelete}>
+                          <Link
+                            value={index}
+                            onClick={(e) => {
+                              updateIndex(
+                                e.currentTarget.getAttribute("value")
+                              );
+                            }}
+                            to="/edittask"
+                            className={`${styles.btn} ${styles.editBtn}`}
+                          >
+                            Chỉnh sửa
+                          </Link>
+
+                          <div
+                            value={index}
+                            onClick={(e) => {
+                              handleDelete(
+                                e.currentTarget.getAttribute("value")
+                              );
+                            }}
+                            className={`${styles.btn} ${styles.deleteBtn}`}
+                          >
+                            Xóa
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
@@ -165,7 +156,7 @@ export default function TJanitor(props) {
                 {janitorInfo("CCCD", infoEmp.cccd)}
                 {janitorInfo("Tuổi", infoEmp.age)}
                 {janitorInfo("Chức vụ", infoEmp.role)}
-                <Link to="#" className={styles.schedule}>
+                <Link to="/employee/detail" className={styles.schedule}>
                   <img
                     className={styles.pdr10}
                     src={images.schedule}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HereMap</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <h1>Here Maps</h1>
+    <div>Current mode: <span>value</span></div>
+    <div>Edit location</div>
+    <button value="Quận 1" id="Quan1">Quan1</button>
+    <button value="Quận 3" id="Quan3">Quan3</button>
+    <button value="Quận 5" id="Quan5">Quan5</button>
+    <button class="MCP_btn">Edit MCP</button>
+    <button class="Factory_btn">Edit factory</button>
+    <button class="Delete_btn">Delete</button>
+    <button class="Finish_btn">Save</button>
+    <button class="Exit_btn">Exit editing</button>
+
+    <!-- Nút -->
+    <div>Edit routes</div>
+    <button class="Routing_btn">Start routing</button>
+    <button class="Clear-route_btn">Clear routes</button>
+    <button class="Undo_btn">Undo</button>
+    <button class="Optimize_btn">optimize</button>
+    <button class="Finish-routing_btn">Finish routing</button>
+    <button class="Exit-routing_btn">Exit routing</button>
+
+    <div class="form">
+      <button id="search-btn">Search location</button>
+      <input type="text" id="search-location" list="suggestions" />
+      <datalist id="suggestions"></datalist>
+    </div>
+
+    <div style="width: 70%; height: 480px" id="mapContainer"></div>
+    <img src="" alt="" />
+    <!-- <script type="module" src="MapElement.js"></script> -->
+    <script type="module" src="initmap.js"></script>
+    <script type="module" src="OperationOnMap.js"></script>
+    <script type="module" src="searh-module.js"></script>
+    <script type="module" src="routing.js"></script>
+  </body>
+</html>

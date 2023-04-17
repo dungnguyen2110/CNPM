@@ -1,15 +1,14 @@
 .main-add {
   position: absolute;
   width: 96%;
-  height: 570px;
-  // padding: 5% 10%;
+  height: 600px;
   display: flex;
   margin: 2%;
   .main-table {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    border: 3px solid #000000;
+    border: 3px solid #000;
     width: 100%;
     height: 100%;
     .title {
@@ -44,7 +43,7 @@
           list-style-type: none;
           li {
             p {
-                font-size: 18px;
+              font-size: 18px;
               margin-bottom: 5px;
             }
             margin: 0;
@@ -61,19 +60,19 @@
         justify-content: space-between;
         padding-right: 4%;
         label {
-            font-size: 18px;
+          font-size: 18px;
           margin: 0;
           width: 30%;
         }
         select {
-            font-size: 18px;
+          font-size: 18px;
           background: #edebc1;
           border: 1px solid #000000;
           margin: 0;
           width: 60%;
         }
         input {
-            font-size: 18px;
+          font-size: 18px;
           background: #edebc1;
           border: 1px solid #000000;
           margin: 0;
@@ -92,7 +91,7 @@
         display: flex;
         width: 50%;
         justify-content: space-around;
-        a{
+        a {
           display: flex;
           text-decoration: none;
           button {
@@ -102,13 +101,17 @@
             border: 3px solid #000000;
             border-radius: 30px;
             // width: 200px;
-          
+
             width: 200px;
             height: 100%;
             color: #000000;
           }
-          .b2{
-            background: rgb(96, 236, 108);
+          .b2 {
+            background: var(--map-color);
+          }
+
+          .b2:hover {
+            filter: var(--filter-hover);
           }
         }
       }

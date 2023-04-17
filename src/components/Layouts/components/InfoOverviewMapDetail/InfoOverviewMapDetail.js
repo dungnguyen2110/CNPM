@@ -2,7 +2,11 @@ import styles from "./InfoOverviewMapDetail.module.scss";
 import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
-
+import { useState } from "react";
+import Initmap from "./initmap.js";
+import Operation from "./OperationOnMap.js";
+import Routing from "./routing";
+import SearchModule from "./searh-module";
 function regionInfo(nameRegion, area) {
   return (
     <div className={styles.regionInfo}>
@@ -38,12 +42,12 @@ function infoElement(attr, value, isLink) {
 function btnRoad(name1, class1, name2, class2) {
   return (
     <div className={`${styles.RouteBtns} ${styles.mt16}`}>
-      <div className={`${styles.RouteBtn} ${styles.leftBtn} ${class1}`}>
+      <button className={`${styles.RouteBtn} ${styles.leftBtn} ${class1}`}>
         {name1}
-      </div>
-      <div className={`${styles.RouteBtn} ${styles.rightBtn} ${class2}`}>
+      </button>
+      <button className={`${styles.RouteBtn} ${styles.rightBtn} ${class2}`}>
         {name2}
-      </div>
+      </button>
     </div>
   );
 }
@@ -54,78 +58,132 @@ function MDetail(props) {
   const nameRegion = data.regions[0].name;
   const areaRegion = data.regions[0].area;
 
-  //Lấy thông tin nhiệm vụ của Collector
-  const nameCollector = data.tasks[0].employees;
-  const time = data.tasks[0].time[0];
-  const route = data.tasks[0].route;
-  const infoElements = [
-    infoElement("Người thu gom:", nameCollector, true),
-    infoElement("Thời gian:", time),
-    infoElement("Chu trình:", route),
-    infoElement("Quảng đường", 20 + "km"),
-  ];
+  const [tasks, setTasks] = useState(data.taskCollector);
+  // console.log(tasks);
+  // console.log(tasks.length);
+
+  // const infoElements = [
+  //   infoElement("Người thu gom:", nameCollector, true),
+  //   infoElement("Thời gian:", time),
+  //   infoElement("Chu trình:", route),
+  //   infoElement("Quảng đường", distance + "km"),
+  // ];
 
   return (
     <div>
       <HeaderTable />
+
       <div className={styles.container}>
         {regionInfo(nameRegion, areaRegion + "km^2")}
 
         <div className={styles.regionContainer}>
+          <Link to="/infotask">Qua trang add task</Link>
           <div className={styles.regionTask}>
             <div className={styles.headerTitle}>Thông tin nhiệm vụ</div>
-            {infoElements.length === 0 ? (
+            {tasks.length === 0 ? (
               <div className={styles.taskEmpty}>
                 <div className={styles.mt10}>Vùng này không có Collector</div>
-                <div className={styles.addTask}>
+                <Link to="/addtaskcollector" className={styles.addTask}>
                   <img
                     className={styles.pdr10}
                     src={images.addicon}
                     alt="Thêm nhiệm vụ"
                   ></img>
                   Thêm nhiệm vụ
-                </div>
+                </Link>
               </div>
             ) : (
               <div className={styles.taskInfo}>
                 <div className={styles.infoElements}>
-                  {infoElements.map((element, index) => (
-                    <div key={index}>{element}</div>
-                  ))}
+                  <div className={styles.infoElement}>
+                    <span>Người thu gom</span>
+                    <span>{tasks[0].employees}</span>
+                    {/* {console.log(tasks[0].employees)} */}
+                    <Link className={styles.viewInfo} to="/employee/detail">
+                      Xem thông tin
+                    </Link>
+                  </div>
+                  <div className={styles.infoElement}>
+                    <span>Thời gian</span>
+                    <span>{tasks[0].time[0]}</span>
+                  </div>
+                  <div className={styles.infoElement}>
+                    <span>Chu trình</span>
+                    <span>{tasks.route}</span>
+                  </div>
+                  <div className={styles.infoElement}>
+                    <span>Quảng đường</span>
+                    <span>{tasks[0].distance}</span>
+                  </div>
                 </div>
                 <hr className={styles.line} />
 
-                <div>Thủ công</div>
                 {btnRoad(
                   "Bắt đầu",
-                  styles.optimizeColor,
-                  "Xác nhận",
-                  styles.editColor
+                  "Routing_btn",
+                  "Xóa chu trình",
+                  "Clear-route_btn"
                 )}
                 {btnRoad(
-                  "Chỉnh sửa",
-                  styles.optimizeColor,
-                  "Lưu",
-                  styles.editColor
+                  "Trở lại",
+                  "Undo_btn",
+                  "kết thúc",
+                  "Finish-routing_btn"
                 )}
 
                 <hr className={styles.line} />
-                <div>Tự động</div>
-
                 {btnRoad(
                   "Tối ưu chu trình",
-                  styles.editColor,
-                  "Xóa nhiệm vụ",
-                  styles.deleteColor
+                  "Optimize_btn",
+                  "Thoát",
+                  "Exit-routing_btn"
                 )}
+
+                <div
+                  className={`${styles.RouteBtn} ${styles.leftBtn} ${styles.deleteBtn}`}
+                >
+                  Xóa nhiệm vụ
+                </div>
+
+                {/* <div>Tự động</div> */}
+
+                <button value="Quận 1" id="Quan1">
+                  Quan1
+                </button>
+                <button value="Quận 3" id="Quan3">
+                  Quan3
+                </button>
+                <button value="Quận 5" id="Quan5">
+                  Quan5
+                </button>
+
+                {/* <button className="Routing_btn">Start routing</button>
+                <button className="Clear-route_btn">Clear routes</button>
+                <button className="Undo_btn">Undo</button>
+                <button className="Optimize_btn">optimize</button>
+                <button className="Finish-routing_btn">Finish routing</button>
+                <button className="Exit-routing_btn">Exit routing</button> */}
+
+                <div className="form">
+                  <button id="search-btn">Search location</button>
+                  <input type="text" id="search-location" list="suggestions" />
+                  <datalist id="suggestions"></datalist>
+                </div>
               </div>
             )}
           </div>
 
           <div className={styles.regionMap}>
             <div className={styles.headerTitle}>Bản đồ vùng</div>
-            <Link to="/taskjanitor" className={styles.mapDetail}></Link>
+            <div
+              style={{ width: "90%", height: "100%" }}
+              id="mapContainer"
+            ></div>
           </div>
+          <Initmap />
+          <Operation />
+          <Routing />
+          <SearchModule />
         </div>
       </div>
     </div>

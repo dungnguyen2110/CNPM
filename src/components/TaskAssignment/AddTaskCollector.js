@@ -1,9 +1,8 @@
 import React from "react";
-import "../TaskAssignment/addtask.scss";
+import "../TaskAssignment/addtaskcollector.scss";
 import { Link } from "react-router-dom";
-// import Search from "../Layouts/components/Search";
 
-export default function AddTask(props) {
+export default function AddTaskCollector(props) {
   const dataArea = props.data.area;
   const infoArea = props.data
     ? props.data.area[props.index]
@@ -28,22 +27,20 @@ export default function AddTask(props) {
     // event.preventDefault();
     let temp = {
       employees: document.getElementById("inputEmployee").value,
-      area: document.getElementById("inputArea").value,
-      date: document.getElementById("inputDate").value,
-      time: [document.getElementById("inputTime").value],
-      timeEnd: [document.getElementById("inputEndTime").value],
-
+      // area: document.getElementById("inputArea").value,
+      // date: document.getElementById("inputDate").value,
+      time: document.getElementById("inputTime").value,
       // 'img': document.getElementById('inputEmployees'),
       // 'distance': document.getElementById('inputDistance')
       distance: 30, // document.getElementById('inputDistance')
     };
 
-    let ule = [...props.data.tasks];
+    let ule = [...props.data.taskCollector];
     // console.log(ule)
     ule.push(temp);
     let temp2 = props.data;
     // if (temp2===temp3) props.data.task=[]
-    temp2.tasks = ule;
+    temp2.taskCollector = ule;
     props.updatedData(temp2);
   };
 
@@ -75,34 +72,36 @@ export default function AddTask(props) {
             </ul>
           </div>
           <div className="right">
-            <label for="my-select">Khu vực:</label>
-            <select id="inputArea" name="my-select" defaultValue="Chọn khu vực">
-              <option value={""}>-- Chọn khu vực --</option>
-              {dataArea.map((value) => (
-                <option value={value.name}>{value.name}</option>
+            <label htmlFor="my-select">Vùng:</label>
+            <select id="inputArea" name="my-select" defaultValue="Chọn vùng">
+              <option value={""}>-- Chọn vùng --</option>
+              {dataArea.map((value, index) => (
+                <option key={index} value={value.name}>
+                  {value.name}
+                </option>
               ))}
             </select>
-            <label for="my-select">Nhân viên:</label>
+            <label htmlFor="my-select">Nhân viên:</label>
             <select id="inputEmployee" name="my-select">
               <option value={""}>-- Chọn nhân viên --</option>
-              {employeessss.map((value) => (
-                <option value={value.name}>{value.name}</option>
+              {employeessss.map((value, index) => (
+                <option key={index} value={value.name}>
+                  {value.name}
+                </option>
               ))}
             </select>
-            <label for="my-select">Ngày:</label>
+            <label htmlFor="my-select">Ngày:</label>
             <input type="date" id="inputDate" />
-            <label for="my-select">Giờ bắt đầu:</label>
+            <label htmlFor="my-select">Giờ:</label>
             <input type="time" id="inputTime" />
-            <label for="my-select">Giờ kết thúc</label>
-            <input type="time" id="inputEndTime" />
           </div>
         </div>
         <div className="control">
           <div className="container">
-            <Link to="/taskJanitor">
+            <Link to="/map/detail">
               <button className="b1">Hủy</button>
             </Link>
-            <Link to="/taskjanitor" onClick={Save}>
+            <Link to="/map/detail" onClick={Save}>
               <button className="b2">Lưu</button>
             </Link>
           </div>

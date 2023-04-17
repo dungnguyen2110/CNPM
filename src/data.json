@@ -5,7 +5,8 @@
       "employees": "A",
       "code": 1001,
       "date": "2222-02-02",
-      "time": ["7:30-9:00", "10:00-12:00", "15:00-17:50"],
+      "time": ["7:30", "10:00-12:00", "15:00-17:50"],
+      "timeEnd": ["9:00"],
       "position": true,
       "img": "./images/map1",
       "area": "1",
@@ -65,6 +66,13 @@
       "region": "Quận 1",
       "distance": "30",
       "trollercapacity": 200
+    }
+  ],
+  "taskCollector": [
+    {
+      "employees": "A",
+      "time": ["7:30-9"],
+      "distance": 30
     }
   ],
   "area": [

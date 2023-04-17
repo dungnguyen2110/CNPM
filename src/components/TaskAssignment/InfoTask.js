@@ -1,17 +1,21 @@
 import React from "react";
 import "../TaskAssignment/infotask.scss";
 import { Link } from "react-router-dom";
-
+import Initmap from "../Layouts/components/InfoOverviewMapDetail/initmap";
 export default function InfoTask(props) {
   const { data, index, updatedata, setIndex } = props;
   console.log(updatedata, setIndex);
   console.log(data);
   console.log(data[index]);
-  let obj = data.tasks[index] || {
+  console.log(data.tasks);
+  // console.log(data.task[index]);
+  // let obj = data.tasks[index] || {
+  let obj = {
     area: "Khu vực 1",
     employees: "A",
     date: "1999-12-12",
     time: "14:00:00",
+    timeEnd: "16:00:00",
     img: "../",
   };
   if (data) obj = { ...obj, area: data.area[index].name };
@@ -28,21 +32,28 @@ export default function InfoTask(props) {
     <div className="main-info">
       <div className="main-table">
         <div className="title">
-          <p>Thông tin nhiệm vụ</p>
+          <p>Tạo nhiệm vụ cho Janitor</p>
         </div>
         <div className="content">
           <div className="left">
-            <label for="my-select">Khu vực:</label>
+            <label htmlFor="my-select">Khu vực:</label>
             <input type="text" value={obj.area} />
-            <label for="my-select">Nhân viên:</label>
+            <label htmlFor="my-select">Nhân viên:</label>
             <input id="my-select" value={obj.employees} />
-            <label for="my-select">Ngày:</label>
+
+            <label htmlFor="my-select">Ngày:</label>
             <input type="date" value={obj.date} />
-            <label for="my-select">Giờ:</label>
+            <label htmlFor="my-select">Giờ:</label>
+            <input type="time" value={obj.time} />
+            <label htmlFor="my-select">Giờ bắt đầu:</label>
+            <input type="time" value={obj.time} />
+            <label htmlFor="my-select">Giờ kết thúc</label>
             <input type="time" value={obj.time} />
           </div>
           <div className="right">
-            <img className="img-map" src={obj.img} alt=" Đây là cái map"></img>
+            {/* <div className="img-map" src={obj.img} alt=" Đây là cái map"></div> */}
+            <div id="mapContainer" className="img-map"></div>
+
             <p>Thông tin khu vực:</p>
             <ul>
               <li>
@@ -62,18 +73,16 @@ export default function InfoTask(props) {
               </li>
             </ul>
           </div>
-          {/* <div className="mid">
-
-                    </div> */}
         </div>
         <div className="control">
           <div className="container">
-            <Link to="/tasks">
+            <Link to="/map/detail">
               <button className="b1">Trở về</button>
             </Link>
           </div>
         </div>
       </div>
+      <Initmap />
     </div>
   );
 }

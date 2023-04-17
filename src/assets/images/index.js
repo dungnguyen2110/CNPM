@@ -9,6 +9,11 @@ const images = {
   search: require("./search.png"),
   task: require("./task.png"),
   contact: require("./contact.png"),
+  city: require("./city.png"),
+  Factory: require("./Factory.png"),
+  Landfill: require("./Landfill.png"),
+  location: require("./location.png"),
+  startPoint: require("./startPoint.png"),
 };
 
 export default images;
