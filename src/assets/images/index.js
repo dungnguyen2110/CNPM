@@ -14,6 +14,8 @@ const images = {
   Landfill: require("./Landfill.png"),
   location: require("./location.png"),
   startPoint: require("./startPoint.png"),
+  deleteicon: require("./delete.png"),
+  editicon: require("./edit.png"),
 };
 
 export default images;

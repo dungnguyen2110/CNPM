@@ -9,7 +9,8 @@ import {
   AddMarker,
 } from "./OperationOnMap.js";
 import { DisableEditRoute } from "./routing.js";
-let req;
+let req, valueInputSearch;
+
 export default function SearchModule() {
   useEffect(() => {
     req = new XMLHttpRequest();
@@ -24,17 +25,30 @@ export default function SearchModule() {
 
     //First focus is city
 
-    focusLocation(map, current_focus); //Focus on the whole city first
+    if (focusLocation) {
+      focusLocation(map, current_focus); //Focus on the whole city first
+    }
     //add event listener for search button between district
-    District1_btn.addEventListener("click", GoToDistrict);
-    District3_btn.addEventListener("click", GoToDistrict);
-    District5_btn.addEventListener("click", GoToDistrict);
+    if (District1_btn) {
+      District1_btn.addEventListener("click", GoToDistrict);
+    }
+    if (District3_btn) {
+      District3_btn.addEventListener("click", GoToDistrict);
+    }
+    if (District5_btn) {
+      District5_btn.addEventListener("click", GoToDistrict);
+    }
     function GoToDistrict() {
-      input.value = "";
-      input.textContent = "";
-      suggestion_list.innerHTML = "";
+      if (input) {
+        input.value = "";
+        input.textContent = "";
+      }
+      if (suggestion_list) {
+        suggestion_list.innerHTML = "";
+      }
       DisableEditRoute();
       var district = this.value;
+
       var mydistrict = getDistrict(district);
       if (mydistrict) {
         if (district != current_focus.name) {
@@ -56,18 +70,21 @@ export default function SearchModule() {
     }
 
     //Add event listener for search box, search for every input change
-    input.addEventListener("input", function () {
-      var location_to_search = String(input.value);
-      if (location_to_search.length >= 3) {
-        var content = packageContent(
-          location_to_search,
-          current_focus.location,
-          4
-        );
-        getLocation(content, true);
-      }
-    });
-    input.addEventListener("change", ReadValue);
+    if (input) {
+      input.addEventListener("input", function () {
+        var location_to_search = String(input.value);
+        input.textContent = "";
+        if (location_to_search.length >= 3) {
+          var content = packageContent(
+            location_to_search,
+            current_focus.location,
+            4
+          );
+          getLocation(content, true);
+        }
+      });
+      input.addEventListener("change", ReadValue);
+    }
     function ReadValue() {
       var options = document.getElementsByTagName("option");
       for (let i = 0; i < options.length; i++) {
@@ -145,7 +162,22 @@ export default function SearchModule() {
     }
 
     var coors = [];
-    searchBtn.addEventListener("click", performSearch);
+
+    if (input) {
+      input.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          performSearch();
+        }
+      });
+    }
+    if (searchBtn) {
+      searchBtn.addEventListener("click", performSearch);
+    }
+    // console.log(searchBtn);
+
+    // function clearContent(value) {
+    //   value = "";
+    // }
     function performSearch() {
       var options = document.getElementsByTagName("option");
       if (String(input.textContent).includes(",")) {
@@ -155,7 +187,11 @@ export default function SearchModule() {
         coors.push(coor);
         showLocations(coors);
         focusLocation(map, { zoom: mapScale.streets, location: t_coor });
-      } else alert("No location");
+        valueInputSearch = input.value;
+        console.log("value" + valueInputSearch);
+      } else {
+        alert("No location");
+      }
     }
     //get locations, which is an array of coor and show them.
     function showLocations(locations) {
@@ -171,4 +207,4 @@ export default function SearchModule() {
   }, []);
 }
 
-export { req };
+export { req, valueInputSearch };

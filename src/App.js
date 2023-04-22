@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routesUWC } from "../src/routes";
 import { DefaultLayout } from "../src/components/Layouts";
 import HomeTA from "./components/TaskAssignment/HomeTA";
-import AddTask from "./components/TaskAssignment/AddTask";
 import AddTaskCollector from "./components/TaskAssignment/AddTaskCollector";
 import EditTask from "./components/TaskAssignment/EditTask";
-import InfoTask from "./components/TaskAssignment/InfoTask";
+import AddTaskJanitor from "./components/TaskAssignment/addTaskJanitor";
+
 import { useState, useCallback } from "react";
 let dataInit = require("./data.json");
 function App() {
@@ -64,17 +64,6 @@ function App() {
           />
 
           <Route
-            path="/addtask"
-            element={
-              <AddTask
-                data={data}
-                updatedData={updatedData}
-                setIndex={setIndex}
-                index={index}
-              />
-            }
-          />
-          <Route
             path="/addtaskcollector"
             element={
               <AddTaskCollector
@@ -97,9 +86,9 @@ function App() {
             }
           />
           <Route
-            path="/infotask"
+            path="/addTaskJanitor"
             element={
-              <InfoTask
+              <AddTaskJanitor
                 data={data}
                 updatedData={updatedData}
                 setIndex={setIndex}

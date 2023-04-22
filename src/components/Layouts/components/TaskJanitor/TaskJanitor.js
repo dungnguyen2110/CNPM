@@ -84,7 +84,7 @@ export default function TJanitor(props) {
                       <div className={styles.infoElement}>
                         <div className={styles.infoText}>
                           <span className={styles.pdr10}>Người quét rác:</span>
-                          <span>{task.employees}</span>
+                          <span>{task.area}</span>
                         </div>
                         <Link
                           value={index}
@@ -134,7 +134,7 @@ export default function TJanitor(props) {
                 </div>
               )}
 
-              <Link to="/addtask" className={styles.addTask}>
+              <Link to="/addTaskJanitor" className={styles.addTask}>
                 <img
                   className={styles.pdr10}
                   src={images.addicon}

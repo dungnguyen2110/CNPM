@@ -6,8 +6,28 @@
   padding-right: 10px;
 }
 
+.ml10 {
+  margin-left: 10px;
+}
+
 .mt10 {
   margin-top: 10px;
+}
+.icon {
+  width: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  font-size: 20px;
+  background: rgba(197, 194, 194, 0.28);
+  // border-left: 3px solid #000000;
+  border-right: 3px solid #000000;
+  width: 100%;
+  // display: none;
 }
 
 .regionInfo {
@@ -17,6 +37,7 @@
   padding: 5px 10px;
   height: 50px;
   background: rgba(197, 194, 194, 0.28);
+  display: none;
 
   .arrowback {
     margin-right: 20px;
@@ -51,19 +72,24 @@
   }
 }
 
+.wrap {
+  width: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 550px;
+  height: var(--height-container);
   border: 3px solid #000;
   border-top: none;
+  padding: 0;
 }
 
 .regionContainer {
   display: flex;
   flex-direction: row;
-  height: 450px;
+  height: 90%;
   border-top: 3px solid #000000;
   padding-top: 20px;
 }
@@ -96,11 +122,12 @@
     padding: 0px 20px;
     width: 100%;
     height: 100%;
-    border-right: 3px solid #000;
+
+    display: none;
 
     .infoElements {
       overflow-y: auto;
-      height: 45%;
+      max-height: 37%;
     }
   }
 }
@@ -118,7 +145,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // flex-grow: 1;
+    font-size: 14px;
   }
   .leftBtn {
     border: 3px solid #000000;
@@ -165,29 +192,31 @@
 .taskEmpty {
   width: 100%;
   height: 100%;
-  border-right: 3px solid #000;
+
   flex-direction: column;
   display: flex;
   align-items: center;
+  display: none;
+}
 
-  .addTask {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    margin-top: 40px;
-    width: 60%;
-    background: var(--map-color);
-    border: 3px solid #000000;
-    border-radius: 30px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #000;
-  }
+.addTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 10px 30px;
 
-  .addTask:hover {
-    background: var(--map-hover);
-  }
+  background: var(--map-color);
+  border: 3px solid #000000;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  height: 50px;
+}
+
+.addTask:hover {
+  background: var(--map-hover);
 }
 
 .regionMap {
@@ -195,12 +224,46 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
-  margin: 0 40px;
+  margin: 0;
+
+  .containerMap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    padding: 10px 30px;
+    border-left: 3px solid #000;
+  }
+
+  .actionMap {
+    margin-left: 20px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    order: 2;
+  }
+
+  .mapContainer {
+    order: 1;
+  }
 }
 
-.mapDetail {
-  width: 100%;
-  height: 100%;
-  background-color: green;
-  margin: 20px 0;
+.actionRouting {
+  padding-top: 50px;
+  display: none;
+  .buttonRouting {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    width: 100%;
+    height: 50px;
+    background: #d6ae97;
+    border: 3px solid #000000;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 }

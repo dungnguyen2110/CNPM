@@ -13,7 +13,8 @@
       "region": "Quận 1",
       "distance": "30",
       "route": "MCP1 -> MCP2 -> MCP3",
-      "trollercapacity": 50
+      "trollercapacity": 50,
+      "location:": ""
     },
     {
       "id": 2,
@@ -70,9 +71,49 @@
   ],
   "taskCollector": [
     {
+      "id": 1,
       "employees": "A",
-      "time": ["7:30-9"],
-      "distance": 30
+      "code": 1001,
+      "date": "2222-02-02",
+      "timeStart": ["7:30"],
+      "timeEnd": ["9:00"],
+      "position": true,
+      "img": "./images/map1",
+      "location": "1",
+      "region": "Quận 1",
+      "distance": "30",
+      "route": "MCP1 -> MCP2 -> MCP3",
+      "trollercapacity": 50
+    },
+    {
+      "id": 2,
+      "employees": "B",
+      "code": 1001,
+      "date": "2222-02-02",
+      "timeStart": ["8:00"],
+      "timeEnd": ["9:00"],
+      "position": true,
+      "img": "./images/map1",
+      "location": "1",
+      "region": "Quận 3",
+      "distance": "30",
+      "route": "MCP1 -> MCP5 -> MCP7",
+      "trollercapacity": 50
+    },
+    {
+      "id": 3,
+      "employees": "C",
+      "code": 1001,
+      "date": "2222-02-02",
+      "timeStart": ["8:30"],
+      "timeEnd": ["10:00"],
+      "position": true,
+      "img": "./images/map1",
+      "location": "1",
+      "region": "Quận 5",
+      "distance": "30",
+      "route": "MCP1 -> MCP7 -> MCP9",
+      "trollercapacity": 50
     }
   ],
   "area": [

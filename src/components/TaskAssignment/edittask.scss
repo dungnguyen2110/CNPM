@@ -1,28 +1,28 @@
-.main-edit {
+.main {
   position: absolute;
   width: 96%;
-  height: 570px;
-  // padding: 5% 10%;
-  display: flex;
+  height: var(--height-container);
   margin: 2%;
+  display: flex;
+  border: 3px solid #000000;
+
   .main-table {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    border: 3px solid #000000;
+    // border: 3px solid #000000;
     width: 100%;
     height: 100%;
     .title {
       display: flex;
-      height: 10%;
+      height: var(--header-height);
       background: rgba(197, 194, 194, 0.28);
-      justify-content: space-around;
       align-items: center;
       padding: 2%;
-      p {
+      div {
         font-size: 18px;
-        width: 100%;
-        text-align: center;
+        width: 50%;
+
         font-size: 22px;
         font-weight: 600;
       }
@@ -32,8 +32,9 @@
       justify-content: space-between;
       width: 100%;
       height: 50%;
+      padding: 0 100px;
       .left {
-        width: 26%;
+        width: 35%;
         padding-left: 4%;
         p {
           margin: 0;
@@ -57,14 +58,14 @@
           }
         }
       }
-      .mid{
+      .mid {
         width: 30%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         padding-right: 4%;
-        p{
+        p {
           width: 100%;
           text-align: center;
           font-size: 22px;
@@ -88,16 +89,15 @@
           margin: 0;
           width: 60%;
         }
-
       }
       .right {
-        width: 30%;
+        width: 50%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         padding-right: 4%;
-        p{
+        p {
           width: 100%;
           text-align: center;
           font-size: 22px;
@@ -134,7 +134,7 @@
         display: flex;
         width: 50%;
         justify-content: space-around;
-        a{
+        a {
           display: flex;
           text-decoration: none;
           button {
@@ -144,17 +144,172 @@
             border: 3px solid #000000;
             border-radius: 30px;
             // width: 200px;
-          
+
             width: 200px;
             height: 100%;
             color: #000000;
           }
-          .b2{
+          .b2 {
             background: rgb(96, 236, 108);
           }
         }
       }
-
     }
   }
 }
+
+// .main {
+//   position: absolute;
+//   width: 96%;
+//   height: var(--height-container);
+//   margin: 2%;
+//   display: flex;
+
+//   .main-table {
+//     display: flex;
+//     flex-direction: column;
+//     background-color: #ffffff;
+//     border: 3px solid #000000;
+//     width: 100%;
+//     height: 100%;
+//     .title {
+//       display: flex;
+//       height: var(--header-height);
+//       background: rgba(197, 194, 194, 0.28);
+//       align-items: center;
+//       padding: 2%;
+//       div {
+//         font-size: 18px;
+//         width: 50%;
+
+//         font-size: 22px;
+//         font-weight: 600;
+//       }
+//     }
+//     .content {
+//       display: flex;
+//       justify-content: space-between;
+//       width: 100%;
+//       .left {
+//         width: 35%;
+//         margin-top: 5%;
+//         padding-left: 5%;
+//         display: flex;
+//         flex-wrap: wrap;
+//         align-items: center;
+//         justify-content: space-between;
+//         padding-right: 4%;
+//         label {
+//           font-size: 18px;
+//           margin: 20px 0;
+//           width: 30%;
+//         }
+//         select {
+//           font-size: 18px;
+//           background: #edebc1;
+//           border: 1px solid #000000;
+//           margin: 0;
+//           width: 70%;
+//         }
+//         input {
+//           font-size: 18px;
+//           background: #edebc1;
+//           border: 1px solid #000000;
+//           margin: 0;
+//           width: 70%;
+//           padding-left: 10px;
+//         }
+//       }
+
+//       .right {
+//         width: 60%;
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: wrap;
+//         margin-top: 1%;
+//         .img-map {
+//           display: flex;
+//           width: 90%;
+//           height: 300px;
+//           border: 1px solid #000000;
+//         }
+//         //   padding-left: 4%;
+//         p {
+//           width: 100%;
+//           margin-top: 30px;
+//           font-size: 18px;
+//         }
+//         ul {
+//           width: 100%;
+//           margin: 0;
+//           list-style-type: none;
+//           li {
+//             p {
+//               margin: 0;
+//               font-size: 18px;
+//               margin-bottom: 5px;
+//             }
+//             margin: 0;
+//             display: flex;
+//             justify-content: space-between;
+//           }
+//         }
+//       }
+//     }
+//     .control {
+//       width: 100%;
+//       margin-top: 25px;
+//       height: 8%;
+//       display: flex;
+//       justify-content: flex-end;
+//       .container {
+//         display: flex;
+
+//         justify-content: flex-end;
+//         a {
+//           display: flex;
+//           text-decoration: none;
+//           button {
+//             cursor: pointer;
+//             font-size: 18px;
+//             // background: #d6ae97;
+//             border: 3px solid #000000;
+//             border-radius: 30px;
+//             // width: 200px;
+
+//             width: 200px;
+//             height: 100%;
+//             color: #000000;
+//           }
+
+//           .back {
+//             background-color: var(--back-color);
+//           }
+
+//           .back:hover {
+//             background-color: var(--back-hover);
+//             box-shadow: var(--hover-box-shadow);
+//           }
+
+//           .back:active {
+//             box-shadow: var(--active-box-shadow);
+//           }
+
+//           .save {
+//             background-color: var(--save-color);
+//             margin-left: 30px;
+//           }
+
+//           .save:hover {
+//             background-color: var(--save-hover);
+//             box-shadow: var(--hover-box-shadow);
+//           }
+
+//           .save:active {
+//             box-shadow: var(--active-box-shadow);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

@@ -3,13 +3,14 @@ import HeaderTable from "../HeaderTable";
 import { Link } from "react-router-dom";
 import Search from "../Search";
 import React, { useState } from "react";
+import SearchModule from "../InfoOverviewMapDetail/searh-module";
 
 export default function InfoOverviewMap(props) {
   const { data } = props;
 
   //Lấy thông tin các vùng
   const regions = data.regions;
-  console.log(regions);
+
   const [searchResults, setSearchResults] = useState([]);
 
   function handleSearchResult(results) {
@@ -29,13 +30,20 @@ export default function InfoOverviewMap(props) {
           />
           <Link to="./detail" className={styles.regionsDisplay}>
             {searchResults.map((region, index) => (
-              <div key={index} className={styles.regionElement}>
+              <div
+                value={region.name}
+                key={index}
+                id="Quan5"
+                className={styles.regionElement}
+              >
                 {region.name}
               </div>
             ))}
           </Link>
         </div>
       </div>
+
+      <SearchModule />
     </div>
   );
 }

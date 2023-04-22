@@ -47,42 +47,6 @@ let markerType,
 
 const Operation = () => {
   useEffect(() => {
-    // console.log(map);
-    // console.log("1=========");
-    // console.log(getMCPbyDistrict);
-    // console.log("2=========");
-    // console.log(getMCPbyDistrictName);
-    // console.log("3=========");
-    // console.log(mapElements);
-    // console.log("4=========");
-    // console.log(getMCPbyLocation);
-    // console.log("5=========");
-    // console.log(location_to_route);
-    // console.log("6=========");
-    // console.log(stateEditRouting);
-    // console.log("7=========");
-    // console.log(state_edit);
-    // console.log("8=========");
-    // console.log(createPackageRoutingContent);
-    // console.log("9==========");
-    // console.log(addRoutes);
-    // console.log("10==========");
-    // console.log(AddStartPoint);
-    // console.log("11==========");
-    // console.log(getEndPoint);
-    // console.log("12==========");
-    // console.log(AddEndPoint);
-    // console.log("13==========");
-    // console.log(getMCPbyDistrict);
-    // console.log("14==========");
-    // console.log(getMCPbyDistrictName);
-    // console.log("15==========");
-    // console.log(mapElements);
-    // console.log("16==========");
-    // console.log(getMCPbyLocation);
-    // console.log("17==========");
-    // console.log(current_focus);
-
     const H = window.H;
     //Set common variable
     const OperationTypeOnTap = {
@@ -248,7 +212,6 @@ const Operation = () => {
       // console.log(current_focus);
       var coor = { lat: this.getGeometry().lat, lng: this.getGeometry().lng };
       var mcp = getMCPbyLocation(current_focus, coor);
-      console.log(mcp);
     }
 
     increaseOpacity = function increaseOpacity(evt) {

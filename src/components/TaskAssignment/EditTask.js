@@ -40,10 +40,11 @@ export default function EditTask(props) {
   // };
 
   return (
-    <div className="main-edit">
+    <div className="main">
       <div className="main-table">
         <div className="title">
-          <p>Sửa nhiệm vụ</p>
+          <div>Chỉnh sửa nhiệm vụ</div>
+          <div>Janitor</div>
         </div>
         <div className="content">
           <div className="left">
@@ -67,8 +68,8 @@ export default function EditTask(props) {
             </ul>
           </div>
 
-          <div className="mid">
-            <p>Hiện tại</p>
+          <div className="right">
+            <p>Chỉnh sửa</p>
             <label for="my-select">Khu vực:</label>
             <input type="text" value={obj.area} />
             <label for="my-select">Nhân viên:</label>
@@ -79,36 +80,36 @@ export default function EditTask(props) {
             <input type="time" value={obj.time} />
           </div>
 
-          <div className="right">
-            <p>Sửa đổi</p>
-            <label for="my-select">Khu vực:</label>
+          {/* <div className="right"> */}
+          {/* <p>Sửa đổi</p> */}
+          {/* <label for="my-select">Khu vực:</label>
             <select id="inputArea" name="my-select" defaultValue="Chọn khu vực">
               <option value={""}>-- Chọn khu vực --</option>
               {rangmadoc.map((value) => (
                 <option value={value.name}>{value.name}</option>
               ))}
-            </select>
-            <label for="my-select">Nhân viên:</label>
+            </select> */}
+          {/* <label for="my-select">Nhân viên:</label>
             <select id="inputEmployee" name="my-select">
               <option value={""}>-- Chọn nhân viên --</option>
               {employeessss.map((value) => (
                 <option value={value.name}>{value.name}</option>
               ))}
-            </select>
-            <label for="my-select">Ngày:</label>
+            </select> */}
+          {/* <label for="my-select">Ngày:</label>
             <input type="date" id="inputDate" />
             <label for="my-select">Giờ:</label>
-            <input type="time" id="inputTime" />
-          </div>
+            <input type="time" id="inputTime" /> */}
+          {/* </div> */}
         </div>
         <div className="control">
           <div className="container">
             <Link to="/tasks">
-              <button className="b1">Hủy</button>
+              <button className="b1">Trở lại</button>
             </Link>
             <Link to="/taskjanitor">
               <button className="b2" onClick={ongke}>
-                Lưu
+                Xác nhận chỉnh sửa
               </button>
             </Link>
           </div>
