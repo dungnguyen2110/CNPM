@@ -11,6 +11,7 @@ const Initmap = () => {
     var init_position = current_focus.location;
     var init_zoom = current_focus.zoom;
     const H = window.H;
+
     platform = new H.service.Platform({
       apikey: API_Key,
     });

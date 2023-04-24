@@ -13,6 +13,7 @@
 
 .arrowback:hover {
   filter: var(--filter-hover);
+  cursor: pointer;
 }
 
 .iconContact {
@@ -23,7 +24,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  height: 50px;
+  height: var(--header-height);
   width: 100%;
   font-size: 20px;
   background: var(--khuvuc-hover-color);
@@ -34,7 +35,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 550px;
+  height: var(--height-container);
 }
 
 .employeeInfoHeader {
@@ -51,7 +52,7 @@
 .employeeInfoContainer {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: var(--height-container);
   background: var(--white-color);
   border: 3px solid #000;
 

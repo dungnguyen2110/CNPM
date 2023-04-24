@@ -11,9 +11,10 @@ Section:
     Add event to buttons
         
 */
-import { useEffect } from "react";
+import { useEffect, useCallback, useState, useHistory } from "react";
 import images from "../../../../assets/images/index.js";
 import { map } from "./initmap.js";
+import { useNavigate } from "react-router-dom";
 import {
   getMCPbyDistrict,
   getMCPbyDistrictName,
@@ -36,6 +37,8 @@ var AddFactory_Btn = document.getElementsByClassName("Factory_btn")[0];
 var Exit_Btn = document.getElementsByClassName("Exit_btn")[0];
 var Finish_Btn = document.getElementsByClassName("Finish_btn")[0];
 var Delete_Btn = document.getElementsByClassName("Delete_btn")[0];
+let dataInit = require("../../../../data.json");
+
 let markerType,
   focusLocation,
   CreateIcon,
@@ -43,9 +46,12 @@ let markerType,
   increaseOpacity,
   reduceOpacity,
   ViewMapLocations,
-  ShowRoutes;
+  ShowRoutes,
+  ViewTaskLocation;
 
 const Operation = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const H = window.H;
     //Set common variable
@@ -66,6 +72,7 @@ const Operation = () => {
       location: 2,
       startPoint: 3,
       endPoint: 4,
+      task: 5,
     };
     //Location to be the center on map
     focusLocation = function focusLocation(map, region) {
@@ -76,7 +83,9 @@ const Operation = () => {
     const MCP_marker_size = { h: 30, w: 30 };
     const Factory_marker_size = { h: 30, w: 30 };
     //Init map event
-    map.addEventListener("tap", MapOnClick);
+    if (map) {
+      map.addEventListener("tap", MapOnClick);
+    }
     var tapStatus = stateEdit.Disable;
     var actionType = OperationTypeOnTap.None;
 
@@ -170,6 +179,9 @@ const Operation = () => {
         path_to_icon = images.startPoint;
 
         // path_to_icon = "./images/startPoint.png";
+      } else if (type == markerType.task) {
+        path_to_icon = images.task;
+        // path_to_icon = "./images/task.png";
       }
 
       var icon;
@@ -212,6 +224,7 @@ const Operation = () => {
       // console.log(current_focus);
       var coor = { lat: this.getGeometry().lat, lng: this.getGeometry().lng };
       var mcp = getMCPbyLocation(current_focus, coor);
+      console.log(mcp);
     }
 
     increaseOpacity = function increaseOpacity(evt) {
@@ -402,6 +415,29 @@ const Operation = () => {
       );
       map.addObjects([start_point, end_point]);
     };
+
+    ViewTaskLocation = function ViewTaskLocation(districtName) {
+      for (let i = 0; i < dataInit.taskJanitors.length; i++) {
+        var task = dataInit.taskJanitors[i];
+
+        if (task.region === districtName) {
+          if (task.coor) {
+            var marker = AddMarker(map, task.coor, markerType.task);
+            // alert(123);
+
+            marker.addEventListener("tap", NavigateToTaskView);
+          }
+        }
+      }
+    };
+    function NavigateToTaskView() {
+      var task_coor = {
+        lat: this.getGeometry().lat,
+        lng: this.getGeometry().lng,
+      };
+
+      navigate("/taskJanitor", { state: { task_coor } });
+    }
   }, []);
 };
 
@@ -414,6 +450,7 @@ export {
   reduceOpacity,
   ViewMapLocations,
   ShowRoutes,
+  ViewTaskLocation,
 };
 
 export default Operation;

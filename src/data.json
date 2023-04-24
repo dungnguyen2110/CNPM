@@ -1,121 +1,91 @@
 {
-  "tasks": [
+  "taskJanitors": [
     {
-      "id": 1,
-      "employees": "A",
-      "code": 1001,
-      "date": "2222-02-02",
-      "time": ["7:30", "10:00-12:00", "15:00-17:50"],
-      "timeEnd": ["9:00"],
-      "position": true,
-      "img": "./images/map1",
-      "area": "1",
+      "cccd": "123456701",
+      "coor": { "lat": 10.76959, "lng": 106.6935 },
+      "date": "2023-03-31",
+      "distance": 30,
+      "fullName": "Nguyễn Văn A",
+      "index": 2,
+      "lastName": "A",
+      "location": "Cửa Hàng ABC Entertainment",
       "region": "Quận 1",
-      "distance": "30",
-      "route": "MCP1 -> MCP2 -> MCP3",
-      "trollercapacity": 50,
-      "location:": ""
+      "timeEnd": ["02:41", "9:00", "13:00", "15:00"],
+      "timeStart": ["02:38", "10:00", "14:00", "17:00"]
     },
     {
-      "id": 2,
-      "employees": "A",
-      "code": 1001,
-      "date": "2222-03-02",
-      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
-      "position": true,
-      "img": "./images/map1",
-      "area": "2",
+      "cccd": "123456702",
+      "coor": { "lat": 10.76959, "lng": 106.6935 },
+      "date": "2023-03-31",
+      "distance": 30,
+      "fullName": "Nguyễn Văn A",
+      "index": 2,
+      "lastName": "A",
+      "location": "Cửa Hàng ABC Entertainment",
       "region": "Quận 1",
-      "distance": "30",
-      "trollercapacity": 100
+      "timeEnd": ["02:41"],
+      "timeStart": ["02:38"]
     },
     {
-      "id": 3,
-      "employees": "C",
-      "code": 1003,
-      "date": "2222-02-02",
-      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
-      "position": true,
-      "img": "./images/map1",
-      "area": "1",
+      "cccd": "123456703",
+      "coor": { "lat": 10.76959, "lng": 106.6935 },
+      "date": "2023-03-31",
+      "distance": 30,
+      "fullName": "Lê Văn C",
+      "index": 2,
+      "lastName": "C",
+      "location": "Cửa Hàng ABC Entertainment",
       "region": "Quận 1",
-      "distance": "30",
-      "trollercapacity": 50
+      "timeEnd": ["02:41"],
+      "timeStart": ["02:38"]
+    }
+  ],
+  "taskCollectors": [
+    {
+      "cccd": "123456704",
+      "date": "2023-04-19",
+      "distance": 30,
+      "fullName": "Lê Văn D",
+      "index": 0,
+      "lastName": "D",
+      "region": "Quận 1",
+      "timeEnd": ["02:40"],
+      "timeStart": ["05:35"],
+      "type": 40
     },
     {
-      "id": 4,
-      "employees": "D",
-      "code": 1004,
-      "date": "2222-02-02",
-      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
-      "position": true,
-      "img": "./images/map1",
-      "area": "1",
+      "cccd": "123456705",
+      "date": "2023-04-19",
+      "distance": 30,
+      "fullName": "Alexander E",
+      "index": 0,
+      "lastName": "E",
       "region": "Quận 1",
-      "distance": "30",
-      "trollercapacity": 400
+      "timeEnd": ["02:40", "13:00", "17:00"],
+      "timeStart": ["05:35", "15:00", "19:00"],
+      "type": 40
     },
     {
-      "id": 5,
-      "employees": "E",
-      "code": 1005,
-      "date": "2022-02-02",
-      "time": ["7:30-9:00", "10:00-11:40", "15:00-17:50"],
-      "position": true,
-      "img": "./images/map1",
-      "area": "1",
+      "cccd": "123456706",
+      "date": "2023-04-19",
+      "distance": 30,
+      "fullName": "Nguyễn F",
+      "index": 0,
+      "lastName": "F",
       "region": "Quận 1",
-      "distance": "30",
-      "trollercapacity": 200
+      "timeEnd": ["02:40"],
+      "timeStart": ["05:35"],
+      "type": 40
     }
   ],
   "taskCollector": [
     {
-      "id": 1,
       "employees": "A",
-      "code": 1001,
-      "date": "2222-02-02",
-      "timeStart": ["7:30"],
-      "timeEnd": ["9:00"],
-      "position": true,
-      "img": "./images/map1",
-      "location": "1",
-      "region": "Quận 1",
-      "distance": "30",
-      "route": "MCP1 -> MCP2 -> MCP3",
-      "trollercapacity": 50
-    },
-    {
-      "id": 2,
-      "employees": "B",
-      "code": 1001,
-      "date": "2222-02-02",
-      "timeStart": ["8:00"],
-      "timeEnd": ["9:00"],
-      "position": true,
-      "img": "./images/map1",
-      "location": "1",
-      "region": "Quận 3",
-      "distance": "30",
-      "route": "MCP1 -> MCP5 -> MCP7",
-      "trollercapacity": 50
-    },
-    {
-      "id": 3,
-      "employees": "C",
-      "code": 1001,
-      "date": "2222-02-02",
-      "timeStart": ["8:30"],
-      "timeEnd": ["10:00"],
-      "position": true,
-      "img": "./images/map1",
-      "location": "1",
-      "region": "Quận 5",
-      "distance": "30",
-      "route": "MCP1 -> MCP7 -> MCP9",
-      "trollercapacity": 50
+      "time": ["7:30-9"],
+      "distance": 30
     }
   ],
+
   "area": [
     {
       "name": "1",
@@ -172,7 +142,7 @@
       "role": "Quét rác"
     },
     {
-      "name": "Phạm Quang B",
+      "name": "Nguyễn Văn A",
       "code": 1002,
       "cccd": 123456702,
       "age": 30,
@@ -204,7 +174,7 @@
       "code": 1006,
       "cccd": 123456706,
       "age": 30,
-      "role": "Quét rác"
+      "role": "Thu gom rác"
     },
     {
       "name": "Robert G",
@@ -276,6 +246,17 @@
       "age": 30,
       "role": "Thu gom rác"
     }
+  ],
+  "typeVehicle": [
+    {
+      "type": 10
+    },
+    { "type": 20 },
+    { "type": 30 },
+    { "type": 40 },
+    { "type": 50 },
+    { "type": 60 },
+    { "type": 70 }
   ],
 
   "regions": [

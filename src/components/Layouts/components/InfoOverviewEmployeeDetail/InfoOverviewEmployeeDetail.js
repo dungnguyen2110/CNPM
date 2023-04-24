@@ -3,6 +3,8 @@ import HeaderTable from "../HeaderTable";
 import Task from "../Task";
 import { Link } from "react-router-dom";
 import images from "../../../../assets/images";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 //Hàm in ra thông tin chi tiết của 1 nhân viên
 function info(name, code, cccd, age, role) {
@@ -37,10 +39,22 @@ function info(name, code, cccd, age, role) {
 }
 
 export default function EDetail(props) {
+  const location = useLocation();
+  console.log(location);
+
+  let cccd;
+  if (location) {
+    cccd = location.state.cccd;
+  }
+
+  const navigate = useNavigate();
   const { data } = props;
+  const infoEmp = data.employees.filter(
+    (emp) => Number(emp.cccd) === Number(cccd)
+  );
 
   // Lấy thông tin empployee đầu tiên
-  const infoEmp = data.employees[0];
+  // const infoEmp = data.employees[0];
 
   return (
     <div className={styles.overviewContainer}>
@@ -48,14 +62,14 @@ export default function EDetail(props) {
 
       <div className={styles.employeeOverview}>
         <div className={styles.employeeInfoHeader}>
-          <Link to="/employee" className={styles.arrowback}>
+          <div onClick={() => navigate(-1)} className={styles.arrowback}>
             <img
               width="40"
               height="30"
               src={images.arrowback}
               alt="Trở lại"
             ></img>
-          </Link>
+          </div>
           <div className={styles.size20}>Thông tin nhân viên</div>
         </div>
 
@@ -78,11 +92,11 @@ export default function EDetail(props) {
               </div>
 
               {info(
-                infoEmp.name,
-                infoEmp.code,
-                infoEmp.cccd,
-                infoEmp.age,
-                infoEmp.role
+                infoEmp[0].name,
+                infoEmp[0].code,
+                infoEmp[0].cccd,
+                infoEmp[0].age,
+                infoEmp[0].role
               )}
             </div>
           </div>

@@ -10,7 +10,7 @@ import {
 } from "./MapElement.js";
 import { AddMarker, markerType } from "./OperationOnMap.js";
 import { platform, map, API_Key } from "./initmap.js";
-import { current_focus } from "./initmap.js";
+import { current_focus, setCurrentFocus } from "./initmap.js";
 
 var createPackageRoutingContent,
   addRoutes,
@@ -23,7 +23,8 @@ var createPackageRoutingContent,
   AddEndPoint,
   AddStartPoint,
   getEndPoint,
-  getStartPoint;
+  getStartPoint,
+  route;
 
 export default function Routing() {
   const H = window.H;
@@ -36,7 +37,7 @@ export default function Routing() {
     var Undo_Btn = document.getElementsByClassName("Undo_btn")[0];
 
     var Optimize_Btn = document.getElementsByClassName("Optimize_btn")[0];
-
+    console.log(Optimize_Btn);
     var Finish_Btn = document.getElementsByClassName("Finish-routing_btn")[0];
     var Exit_Btn = document.getElementsByClassName("Exit-routing_btn")[0];
     var current_mcps = getMCPbyDistrictName("Quận 5");
@@ -223,13 +224,18 @@ export default function Routing() {
       }
     }
 
-    Exit_Btn.addEventListener("click", DisableRouting);
+    if (Exit_Btn) {
+      Exit_Btn.addEventListener("click", DisableRouting);
+    }
+
     function DisableRouting() {
       state_edit = stateEditRouting.Disable;
       ClearRoutingBuffer();
     }
+    if (Finish_Btn) {
+      Finish_Btn.addEventListener("click", SaveWork);
+    }
 
-    Finish_Btn.addEventListener("click", SaveWork);
     function SaveWork() {
       state_edit = stateEditRouting.Disable;
       var this_district = current_focus;
@@ -277,7 +283,8 @@ export default function Routing() {
         for (let i = 0; i < temp_route.length; i++) {
           this_district.routeInfo.routes.push(temp_route[i]);
         }
-        // console.log(this_district.routeInfo);
+        console.log(this_district.routeInfo);
+        console.log(this.district);
       } else {
         if ("routeInfo" in this_district) delete this_district.routeInfo;
       }
@@ -286,9 +293,13 @@ export default function Routing() {
       temp_route = [];
       startPoint = 0;
       endPoint = 0;
+      route = this_district;
+      setCurrentFocus(this_district);
     }
 
-    Undo_Btn.addEventListener("click", UndoRouting);
+    if (Undo_Btn) {
+      Undo_Btn.addEventListener("click", UndoRouting);
+    }
 
     function UndoRouting() {
       if (state_edit != stateEditRouting.Enable) return;
@@ -321,7 +332,9 @@ export default function Routing() {
       }
       if (length > 0) location_to_route.pop();
     }
-    clearRoutes_Btn.addEventListener("click", ClearRoutes);
+    if (clearRoutes_Btn) {
+      clearRoutes_Btn.addEventListener("click", ClearRoutes);
+    }
     function ClearRoutes() {
       if (state_edit !== stateEditRouting.Enable) return;
       var map_objects = map.getObjects();
@@ -353,7 +366,9 @@ export default function Routing() {
       endPoint = 0;
     }
 
-    Optimize_Btn.addEventListener("click", OptimizeRoutes);
+    if (Optimize_Btn) {
+      Optimize_Btn.addEventListener("click", OptimizeRoutes);
+    }
     function OptimizeRoutes() {
       if (state_edit !== stateEditRouting.Enable) return;
       ClearRoutes();
@@ -487,4 +502,5 @@ export {
   AddStartPoint,
   getEndPoint,
   getStartPoint,
+  route,
 };

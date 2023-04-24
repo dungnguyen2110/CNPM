@@ -132,7 +132,6 @@ export function getMCPbyLocation(district, location) {
 
 export function getRoutesbyDistrict(district) {
   if ("routeInfo" in district) {
-    // console.log(district.routeInfo.ad);
     return district.routeInfo.location;
   } else {
     return null;

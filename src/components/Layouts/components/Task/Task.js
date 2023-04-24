@@ -1,22 +1,38 @@
 import styles from "./Task.module.scss";
 import images from "../../../../assets/images";
+import { useLocation } from "react-router-dom";
 
 //Hàm hiển thị thông tin nhiệm vụ được giao
-function taskInfo(time, region, location, tool) {
+function taskInfo(isJanitor, timeStart, timeEnd, region, location, tool) {
   return (
     <div className={styles.JanitorTaskInfo}>
       <div className={styles.taskElement}>
         <div className={styles.taskLabel}>Thời gian:</div>
-        <div className={styles.taskValue}>{time}</div>
+        <div className={styles.taskValue}>
+          {timeStart} - {timeEnd}
+        </div>
       </div>
       <div className={styles.taskElement}>
-        <div className={styles.taskLabel}>Vùng:</div>
-        <div className={styles.taskValue}>{region}</div>
-        <div className={`${styles.taskLabel} ${styles.ml100}`}>Khu vực:</div>
-        <div className={styles.taskValue}>{location}</div>
+        <div className={styles.region}>
+          <div className={styles.taskLabel}>Vùng:</div>
+          <div className={styles.taskValue}>{region}</div>
+        </div>
+
+        <div className={styles.location}>
+          <div className={`${styles.taskLabel} ${styles.ml100}`}>
+            {isJanitor ? "Khu vực:" : "Quảng đường::"}
+          </div>
+          {console.log(100)}
+          <div className={styles.taskValue}>{location}</div>
+        </div>
+
+        <div></div>
       </div>
       <div className={styles.taskElement}>
-        <div className={styles.taskLabel}>Sức chứa troller:</div>
+        <div className={styles.taskLabel}>
+          {isJanitor ? "Sức chứa thùng rác:" : "Sức chứa troller:"}
+        </div>
+
         <div className={styles.taskValue}>{tool}</div>
       </div>
     </div>
@@ -25,23 +41,44 @@ function taskInfo(time, region, location, tool) {
 
 function Task(props) {
   const { code, data } = props;
+  const location = useLocation();
+  console.log(location);
+  let cccd;
+  if (location.state) {
+    cccd = location.state.cccd;
+  }
 
-  //Lấy thông tin nhiệm vụ
+  const taskJanitors = data.taskJanitors;
+  console.log();
+  let isJanitor = false;
+  let task;
+  task = taskJanitors.filter((emp) => Number(emp.cccd) === Number(cccd));
+  if (task.length > 0) isJanitor = true;
+
+  const taskCollectors = data.taskCollectors;
+  console.log(cccd);
+  const tmp = taskCollectors.filter((emp) => Number(emp.cccd) === Number(cccd));
+  console.log(tmp);
+  if (tmp.length > 0) {
+    task = tmp;
+    console.log(111);
+  }
+  console.log(isJanitor);
+  console.log(cccd);
   const taskEmp = [];
-  for (let i = 0; i < data.tasks.length; i++) {
-    let tasks = data.tasks[i];
-    if (tasks.code === code) {
-      for (let j = 0; j < tasks.time.length; j++) {
-        taskEmp.push(
-          taskInfo(
-            tasks.time[j],
-            tasks.region,
-            tasks.area,
-            tasks.trollercapacity + " tấn"
-          )
-        );
-      }
-    }
+  console.log(task[0].distance);
+  // console.log(task.timeStart);
+  for (let i = 0; i < task[0].timeStart.length; i++) {
+    taskEmp.push(
+      taskInfo(
+        isJanitor,
+        task[0].timeStart[i],
+        task[0].timeEnd[i],
+        task[0].region,
+        isJanitor ? task[0].location : 100 + " km",
+        isJanitor ? 30 + " kg" : 50 + " tấn"
+      )
+    );
   }
 
   return (

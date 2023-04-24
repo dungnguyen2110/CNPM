@@ -121,21 +121,30 @@
     flex-direction: column;
     padding: 0px 20px;
     width: 100%;
-    height: 100%;
+    height: 40%;
 
     display: none;
 
     .infoElements {
       overflow-y: auto;
-      max-height: 37%;
+      max-height: 100%;
     }
   }
+}
+
+.block {
+  display: block;
+}
+
+.action {
+  display: none;
 }
 
 .RouteBtns {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 50px;
   width: 100%;
   height: 50px;
 
@@ -191,7 +200,7 @@
 
 .taskEmpty {
   width: 100%;
-  height: 100%;
+  // height: 100%;
 
   flex-direction: column;
   display: flex;

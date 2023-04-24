@@ -7,12 +7,15 @@ import {
   ViewMapLocations,
   ShowRoutes,
   AddMarker,
+  ViewTaskLocation,
 } from "./OperationOnMap.js";
 import { DisableEditRoute } from "./routing.js";
-let req, valueInputSearch;
+let req, valueInputSearch, coor;
 
 export default function SearchModule() {
   useEffect(() => {
+    // console.log(ShowRoutes);
+    // console.log(ViewTaskLocation);
     req = new XMLHttpRequest();
     //Get button
     var District1_btn = document.getElementById("Quan1");
@@ -46,16 +49,21 @@ export default function SearchModule() {
       if (suggestion_list) {
         suggestion_list.innerHTML = "";
       }
+
       DisableEditRoute();
+
       var district = this.value;
 
       var mydistrict = getDistrict(district);
       if (mydistrict) {
-        if (district != current_focus.name) {
+        if (district !== current_focus.name) {
           ClearObject(map);
+          // console.log(myd);
           setCurrentFocus(mydistrict);
           focusLocation(map, current_focus);
           ViewMapLocations(current_focus);
+          // console.log(current_focus.name);
+          ViewTaskLocation(current_focus.name);
           ShowRoutes(current_focus);
         }
       }
@@ -135,7 +143,7 @@ export default function SearchModule() {
         for (let i = 0; i < locations.length; i++) {
           var location = locations[i];
           if (location.address.city == current_focus.name) {
-            var coor = {
+            coor = {
               lat: parseFloat(location.position.lat),
               lng: parseFloat(location.position.lng),
             };
@@ -207,4 +215,4 @@ export default function SearchModule() {
   }, []);
 }
 
-export { req, valueInputSearch };
+export { req, valueInputSearch, coor };

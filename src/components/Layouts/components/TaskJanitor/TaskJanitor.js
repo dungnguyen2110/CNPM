@@ -1,14 +1,14 @@
 import styles from "./TaskJanitor.module.scss";
 import HeaderTable from "../HeaderTable";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import images from "../../../../assets/images";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 //Hàm hiển thị tên khu vực + diện tích
 function locationInfo(nameLocation, area) {
   return (
     <div className={styles.locationInfo}>
-      <Link to="/map/detail" className={styles.arrowback}>
+      <Link to="/map" className={styles.arrowback}>
         <img width="40" height="30" src={images.arrowback} alt="Trở lại"></img>
       </Link>
       <div className={styles.locationInfoElement}>
@@ -34,23 +34,70 @@ function janitorInfo(attr, value) {
 }
 
 export default function TJanitor(props) {
+  const location = useLocation();
   const { data } = props;
 
-  // Lấy tên, diện tích khu vực
-  const nameLocation = data.area[0].name;
   const areaLocation = data.area[0].area;
 
+  let [taskCoor, setTaskCoor] = useState(null);
+
+  console.log("task_coo1", taskCoor);
+
+  let filteredArray;
+  const taskJanitorssss = data.taskJanitors;
+  const [taskJanitors, setTasks] = useState(data.taskJanitors);
+
+  if (taskJanitorssss.length > 0 && !taskCoor) {
+    const tmpz = taskJanitorssss[taskJanitorssss.length - 1].coor;
+    setTaskCoor(tmpz);
+    console.log(taskJanitorssss);
+    console.log(tmpz);
+
+    filteredArray = taskJanitorssss.filter(
+      (obj) => obj.coor.lat === tmpz.lat && obj.coor.lng === tmpz.lng
+    );
+
+    setTasks(filteredArray);
+  }
+  console.log("Coor last:", taskCoor);
+  // console.log(taskJanitorssss[taskJanitorssss.length - 1].coor);
+  if (taskCoor) {
+    filteredArray = taskJanitorssss.filter(
+      (obj) => obj.coor.lat === taskCoor.lat && obj.coor.lng === taskCoor.lng
+    );
+    // setTasks(filteredArray);
+  }
+
   //Lấy thông tin nhiệm vụ
-  const [tasks, setTasks] = useState(data.tasks);
-  console.log(tasks);
+  useEffect(() => {
+    const task_coor = location.state?.task_coor;
+    if (task_coor) {
+      setTaskCoor(task_coor);
+      filteredArray = taskJanitorssss.filter(
+        (obj) =>
+          obj.coor.lat === task_coor.lat && obj.coor.lng === task_coor.lng
+      );
+      setTasks(filteredArray);
+    }
+  }, [location.state, taskJanitorssss]);
+
+  console.log(filteredArray);
+
+  let nameLocation;
+  console.log(taskJanitors);
+  if (data.taskJanitors.length > 0) {
+    nameLocation = taskJanitors[0].location;
+  }
+
+  console.log(taskJanitors.length);
+
   const handleDelete = (x) => {
-    let temp = [...tasks];
+    let temp = [...taskJanitors];
     temp.splice(x, 1);
     setTasks(temp);
     let temp2 = props.data;
     temp2.tasks = temp;
 
-    // updated chưa hoạt động
     props.updatedData(temp2);
   };
 
@@ -58,8 +105,17 @@ export default function TJanitor(props) {
     props.setIndex(x);
   };
 
-  //Lấy thông tin cụ thể nhân viên
-  const infoEmp = data.employees[0];
+  //Lấy thông tin cụ thể của tất cả nhân viên
+  const infoEmps = data.employees;
+
+  // Lưu thông tin nhân viên cần hiển thị
+  const [infoEmp, setInfoEmp] = useState(null);
+
+  // Xử lý sự kiện click vào xem thông tin
+  function displayInfo(cccd) {
+    let tmp = infoEmps.filter((e) => e.cccd === Number(cccd));
+    setInfoEmp(tmp);
+  }
 
   return (
     <div>
@@ -72,35 +128,29 @@ export default function TJanitor(props) {
             <div className={styles.headerTitle}>Thông tin nhiệm vụ</div>
 
             <div className={styles.task}>
-              {tasks.length === 0 ? (
+              {taskJanitors.length === 0 ? (
                 <div className={styles.mt10}>Khu vực này không có Janitor</div>
               ) : (
                 <div className={styles.taskInfo}>
-                  {/* {taskItems.map((element, index) => (
-                    <div key={index}>{element}</div>
-                  ))} */}
-                  {tasks.map((task, index) => (
+                  {taskJanitors.map((task, index) => (
                     <div key={index} className={styles.taskItem}>
                       <div className={styles.infoElement}>
                         <div className={styles.infoText}>
                           <span className={styles.pdr10}>Người quét rác:</span>
-                          <span>{task.area}</span>
+                          <span>{task.lastName}</span>
                         </div>
-                        <Link
+                        <div
                           value={index}
-                          onClick={(e) => {
-                            updateIndex(e.currentTarget.getAttribute("value"));
-                          }}
-                          to="/infotask"
+                          onClick={() => displayInfo(task.cccd)}
                           className={styles.viewInfo}
                         >
                           Xem thông tin
-                        </Link>
+                        </div>
                       </div>
                       <div className={styles.infoElement}>
                         <div className={styles.infoText}>
                           <span className={styles.pdr10}>Thời gian:</span>
-                          <span>{task.time[0]}</span>
+                          <span>{`${task.timeStart[0]} -> ${task.timeEnd[0]}`}</span>
                         </div>
                         <div className={styles.btnEditDelete}>
                           <Link
@@ -111,6 +161,13 @@ export default function TJanitor(props) {
                               );
                             }}
                             to="/edittask"
+                            state={{
+                              location: task.location,
+                              fullName: task.fullName,
+                              timeStart: task.timeStart,
+                              timeEnd: task.timeEnd,
+                              date: task.date,
+                            }}
                             className={`${styles.btn} ${styles.editBtn}`}
                           >
                             Chỉnh sửa
@@ -148,24 +205,33 @@ export default function TJanitor(props) {
           <div className={styles.infoDetailJanitor}>
             <div className={styles.headerTitle}>Thông tin nhân viên</div>
 
-            <div className={styles.infoEmp}>
-              <div className={styles.imgEmp}></div>
-              <div className={styles.infoDetail}>
-                {janitorInfo("Họ và tên", infoEmp.name)}
-                {janitorInfo("Mã nhân viên", infoEmp.code)}
-                {janitorInfo("CCCD", infoEmp.cccd)}
-                {janitorInfo("Tuổi", infoEmp.age)}
-                {janitorInfo("Chức vụ", infoEmp.role)}
-                <Link to="/employee/detail" className={styles.schedule}>
-                  <img
-                    className={styles.pdr10}
-                    src={images.schedule}
-                    alt="Lịch"
-                  ></img>
-                  Lịch làm việc
-                </Link>
+            {infoEmp ? (
+              <div className={styles.infoEmp}>
+                <div className={styles.imgEmp}></div>
+                <div className={styles.infoDetail}>
+                  {janitorInfo("Họ và tên", infoEmp[0].name)}
+                  {janitorInfo("Mã nhân viên", infoEmp[0].code)}
+                  {janitorInfo("CCCD", infoEmp[0].cccd)}
+                  {janitorInfo("Tuổi", infoEmp[0].age)}
+                  {janitorInfo("Chức vụ", infoEmp[0].role)}
+                  <Link
+                    to="/employee/detail"
+                    state={{ cccd: infoEmp[0].cccd }}
+                    className={styles.schedule}
+                  >
+                    <img
+                      className={styles.pdr10}
+                      src={images.schedule}
+                      alt="Lịch"
+                    ></img>
+                    Lịch làm việc
+                  </Link>
+                </div>
+                <div></div>
               </div>
-            </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </div>

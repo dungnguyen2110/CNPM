@@ -1,32 +1,34 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../TaskAssignment/addtask.scss";
 import { Link } from "react-router-dom";
-import Initmap from "../Layouts/components/InfoOverviewMapDetail/initmap";
+import Initmap, {
+  current_focus,
+  setCurrentFocus,
+} from "../Layouts/components/InfoOverviewMapDetail/initmap";
+import {
+  mapElement,
+  mapElements,
+} from "../Layouts/components/InfoOverviewMapDetail/MapElement";
+
 import SearchModule, {
   valueInputSearch,
+  coor,
 } from "../Layouts/components/InfoOverviewMapDetail/searh-module";
 import Operation from "../Layouts/components/InfoOverviewMapDetail/OperationOnMap";
 import Routing from "../Layouts/components/InfoOverviewMapDetail/routing";
 // import { useEffect } from "react";
-
-function getInputValue() {
-  // const a = valueInputSearch;
-  // console.log(valueInputSearch);
-  // console.log(getInputValueSearch());
-}
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function AddTaskJanitor(props) {
-  useEffect(() => {
-    console.log(1);
-    console.log(valueInputSearch);
-    console.log(2);
-  });
+  const [regionSelected, setregionSelected] = useState("Chọn quận khác");
+
+  const handleItemClick = (value) => {
+    setregionSelected(value);
+  };
   const { data, index, updatedata, setIndex } = props;
-  console.log(updatedata, setIndex);
-  console.log(data);
-  console.log(data[index]);
-  console.log(data.tasks);
+
   const dataArea = props.data.area;
   const infoArea = props.data
     ? props.data.area[props.index]
@@ -36,10 +38,12 @@ export default function AddTaskJanitor(props) {
         avgGarbage: 5,
         speed: 12,
       };
+  console.log(infoArea);
 
-  const employeessss = props.data.employees;
-  // console.log(data.task[index]);
-  // let obj = data.tasks[index] || {
+  const janitor = props.data.employees.filter(
+    (employee) => employee.role === "Quét rác"
+  );
+
   let obj = {
     area: "Khu vực 1",
     employees: "A",
@@ -48,7 +52,7 @@ export default function AddTaskJanitor(props) {
     timeEnd: "16:00:00",
     img: "../",
   };
-  if (data) obj = { ...obj, area: data.area[index].name };
+  // if (data) obj = { ...obj, area: data.area[index].name };
   // const infoArea = data
   //   ? data.area[index]
   //   : {
@@ -58,30 +62,44 @@ export default function AddTaskJanitor(props) {
   //       speed: 12,
   //     };
 
-  const Save = (event) => {
-    // event.preventDefault();
+  const Save = (even) => {
+    setIndex(index + 1);
+    let valueSelectEmployee = document.getElementById("inputEmployee").value;
+    let cccd, fullName, lastName;
+    console.log(valueSelectEmployee);
+    if (valueSelectEmployee) {
+      cccd = valueSelectEmployee.split(";")[0];
+      fullName = valueSelectEmployee.split(";")[1];
+      lastName = fullName.split(" ").pop();
+    }
+
+    let date = document.getElementById("inputDate").value;
+    let startTime = [document.getElementById("inputStartTime").value];
+    let endTime = [document.getElementById("inputEndTime").value];
+    let indexFirstComma, location;
+    if (valueInputSearch) {
+      indexFirstComma = valueInputSearch.indexOf(",");
+      location = valueInputSearch.slice(0, indexFirstComma);
+    }
     let temp = {
-      employees: document.getElementById("inputEmployee").value,
-      area: valueInputSearch,
-      date: document.getElementById("inputDate").value,
-      time: [document.getElementById("inputTime").value],
-      timeEnd: [document.getElementById("inputEndTime").value],
-      // location: valueInputSearch,
-      img: document.getElementById("inputEmployees"),
-      distance: document.getElementById("inputDistance"),
-      distance: 30, // document.getElementById('inputDistance')
+      index: index,
+      cccd: cccd,
+      fullName: fullName,
+      lastName: lastName,
+      location: location,
+      coor: coor,
+      date: date,
+      timeStart: startTime,
+      timeEnd: endTime,
+      region: current_focus.name,
+      distance: 30,
     };
-    console.log(temp);
-    let ule = [...props.data.tasks];
-    console.log(ule);
-    // console.log(ule)
+    let ule = [...props.data.taskJanitors];
     ule.push(temp);
-    console.log(ule);
     let temp2 = props.data;
-    console.log(ule);
-    // if (temp2===temp3) props.data.task=[]
-    temp2.tasks = ule;
+    temp2.taskJanitors = ule;
     props.updatedData(temp2);
+    setCurrentFocus(mapElements[0]);
   };
 
   return (
@@ -99,16 +117,17 @@ export default function AddTaskJanitor(props) {
               placeholder="Nhập tên khu vực"
               id="search-location"
               list="suggestions"
+              autoComplete="off"
             />
             {/* {console.log(document.getElementById("search-location"))} */}
             <datalist id="suggestions"></datalist>
-            {getInputValue()}
 
             <label htmlFor="my-select">Nhân viên:</label>
             <select id="inputEmployee" name="my-select">
-              <option value={""}>-- Chọn nhân viên --</option>
-              {employeessss.map((value, index) => (
-                <option key={index} value={value.name}>
+              <option value="">-- Chọn nhân viên --</option>
+
+              {janitor.map((value) => (
+                <option key={value.cccd} value={value.cccd + ";" + value.name}>
                   {value.name}
                 </option>
               ))}
@@ -117,13 +136,55 @@ export default function AddTaskJanitor(props) {
             <label htmlFor="my-select">Ngày:</label>
             <input type="date" id="inputDate" />
             <label htmlFor="my-select">Giờ bắt đầu:</label>
-            <input type="time" id="inputTime" />
+            <input type="time" id="inputStartTime" />
             <label htmlFor="my-select">Giờ kết thúc</label>
             <input type="time" id="inputEndTime" />
           </div>
           <div className="right">
             {/* <div className="img-map" src={obj.img} alt=" Đây là cái map"></div> */}
             <div id="mapContainer" className="img-map"></div>
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {regionSelected}
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <button
+                    onClick={() => handleItemClick("Quận 1")}
+                    value="Quận 1"
+                    id="Quan1"
+                    className="dropdown-item"
+                  >
+                    Quận 1
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleItemClick("Quận 3")}
+                    value="Quận 3"
+                    id="Quan3"
+                    className="dropdown-item"
+                  >
+                    Quận 3
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleItemClick("Quận 5")}
+                    value="Quận 5"
+                    id="Quan5"
+                    className="dropdown-item"
+                  >
+                    Quận 5
+                  </button>
+                </li>
+              </ul>
+            </div>
 
             <p>Thông tin khu vực:</p>
             <ul>
@@ -147,7 +208,7 @@ export default function AddTaskJanitor(props) {
         </div>
         <div className="control">
           <div className="container">
-            <Link to="/taskJanitor" onClick={Save}>
+            <Link to="/taskJanitor">
               <button className="back">Trở lại</button>
             </Link>
 
@@ -158,6 +219,8 @@ export default function AddTaskJanitor(props) {
         </div>
       </div>
       <Initmap />
+      <Routing />
+      {/* <Operation /> */}
       <SearchModule />
     </div>
   );

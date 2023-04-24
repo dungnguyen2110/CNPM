@@ -79,7 +79,13 @@ export default function InfoOverviewEmployee(props) {
                   <div className={`${styles.c3} ${styles.attr} `}>
                     {emp.code}
                   </div>
-                  <Link to="/employee/detail" className={styles.viewInfo}>
+                  {console.log(emp.cccd)}
+
+                  <Link
+                    to="/employee/detail"
+                    state={{ cccd: emp.cccd }}
+                    className={styles.viewInfo}
+                  >
                     Xem thông tin
                   </Link>
                 </div>

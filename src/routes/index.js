@@ -8,8 +8,8 @@ const routesUWC = [
   { path: "/", component: Employee },
   { path: "/employee", component: Employee },
   { path: "/employee/detail", component: EDetail },
-  { path: "/map", component: Map },
-  { path: "/map/detail", component: MDetail },
+  { path: "/map", component: MDetail },
+  // { path: "/map/detail", component: MDetail },
   { path: "/taskjanitor", component: TJanitor },
 ];
 

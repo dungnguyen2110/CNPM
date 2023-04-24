@@ -1,20 +1,33 @@
 import React from "react";
 import "../TaskAssignment/edittask.scss";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { convertLegacyProps } from "antd/es/button/button";
 
 export default function EditTask(props) {
+  const obj = props.data.taskJanitors[props.index] || {
+    area: "Khu vực 1",
+    employees: "A",
+    date: "2022-12-12",
+    time: "14:00:00",
+  };
+  const navigate = useNavigate();
   const ongke = (x) => {
     let temp = {
-      employees: document.getElementById("inputEmployee").value,
-      area: document.getElementById("inputArea").value,
+      ...obj,
+      fullName: obj.fullName,
+      location: obj.location,
+      coor: obj.coor,
       date: document.getElementById("inputDate").value,
-      time: document.getElementById("inputTime").value,
+      timeStart: [document.getElementById("inputStartTime").value],
+      timeEnd: [document.getElementById("inputEndTime").value],
       // 'img': document.getElementById('inputEmployees'),
       // 'distance': document.getElementById('inputDistance')
       distance: 30, // document.getElementById('inputDistance')
     };
     let temp2 = props.data;
-    temp2.tasks[props.index] = temp;
+    console.log(temp2);
+    temp2.taskJanitors[props.index] = temp;
     props.updatedData(temp2);
   };
   const infoArea = props.data.area[props.index] || {
@@ -24,12 +37,7 @@ export default function EditTask(props) {
     speed: 12,
   };
 
-  const obj = props.data.tasks[props.index] || {
-    area: "Khu vực 1",
-    employees: "A",
-    date: "2022-12-12",
-    time: "14:00:00",
-  };
+  console.log(obj);
   const employeessss = props.data.employees;
 
   const rangmadoc = props.data.area;
@@ -71,13 +79,24 @@ export default function EditTask(props) {
           <div className="right">
             <p>Chỉnh sửa</p>
             <label for="my-select">Khu vực:</label>
-            <input type="text" value={obj.area} />
+            <input
+              id="inputLocationid"
+              disabled
+              type="text"
+              value={obj.location}
+            />
             <label for="my-select">Nhân viên:</label>
-            <input id="my-select" value={obj.employees} />
+            <input disabled id="my-select" value={obj.fullName} />
             <label for="my-select">Ngày:</label>
-            <input type="date" value={obj.date} />
-            <label for="my-select">Giờ:</label>
-            <input type="time" value={obj.time} />
+            <input id="inputDate" type="date" defaultValue={obj.date} />
+            <label for="my-select">Giờ bắt đầu:</label>
+            <input
+              id="inputStartTime"
+              type="time"
+              defaultValue={obj.timeStart}
+            />
+            <label for="my-select">Giờ kết thúc:</label>
+            <input id="inputEndTime" type="time" defaultValue={obj.timeEnd} />
           </div>
 
           {/* <div className="right"> */}
@@ -104,9 +123,9 @@ export default function EditTask(props) {
         </div>
         <div className="control">
           <div className="container">
-            <Link to="/tasks">
+            <div onClick={() => navigate(-1)}>
               <button className="b1">Trở lại</button>
-            </Link>
+            </div>
             <Link to="/taskjanitor">
               <button className="b2" onClick={ongke}>
                 Xác nhận chỉnh sửa

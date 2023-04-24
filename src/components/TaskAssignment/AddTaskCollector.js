@@ -2,7 +2,9 @@ import React from "react";
 import "../TaskAssignment/addtask.scss";
 
 import { Link } from "react-router-dom";
-import Initmap from "../Layouts/components/InfoOverviewMapDetail/initmap";
+import Initmap, {
+  current_focus,
+} from "../Layouts/components/InfoOverviewMapDetail/initmap";
 import SearchModule from "../Layouts/components/InfoOverviewMapDetail/searh-module";
 
 export default function AddTaskCollector(props) {
@@ -21,7 +23,11 @@ export default function AddTaskCollector(props) {
         speed: 12,
       };
 
-  const employeessss = props.data.employees;
+  const collector = props.data.employees.filter(
+    (employee) => employee.role === "Thu gom rác"
+  );
+
+  const typeVehicle = props.data.typeVehicle;
   // console.log(data.task[index]);
   // let obj = data.tasks[index] || {
   let obj = {
@@ -43,25 +49,40 @@ export default function AddTaskCollector(props) {
   //     };
 
   const Save = (event) => {
-    // event.preventDefault();
-    let temp = {
-      employees: document.getElementById("inputEmployee").value,
-      area: document.getElementById("inputArea").value,
-      date: document.getElementById("inputDate").value,
-      time: [document.getElementById("inputTime").value],
-      timeEnd: [document.getElementById("inputEndTime").value],
+    setIndex(index + 1);
+    let valueSelectEmployee = document.getElementById("inputEmployee").value;
+    let type = document.getElementById("inputType").value;
+    let cccd, fullName, lastName;
+    console.log(valueSelectEmployee);
+    if (valueSelectEmployee) {
+      cccd = valueSelectEmployee.split(";")[0];
+      fullName = valueSelectEmployee.split(";")[1];
+      lastName = fullName.split(" ").pop();
+    }
 
-      // 'img': document.getElementById('inputEmployees'),
-      // 'distance': document.getElementById('inputDistance')
-      distance: 30, // document.getElementById('inputDistance')
+    let date = document.getElementById("inputDate").value;
+    let startTime = [document.getElementById("inputStartTime").value];
+    let endTime = [document.getElementById("inputEndTime").value];
+
+    let temp = {
+      index: index,
+      cccd: cccd,
+      fullName: fullName,
+      lastName: lastName,
+      type: Number(type),
+      date: date,
+      timeStart: startTime,
+      timeEnd: endTime,
+      region: current_focus.name,
+      distance: 30,
     };
 
-    let ule = [...props.data.tasks];
+    let ule = [...props.data.taskCollectors];
     // console.log(ule)
     ule.push(temp);
     let temp2 = props.data;
     // if (temp2===temp3) props.data.task=[]
-    temp2.tasks = ule;
+    temp2.taskCollectors = ule;
     props.updatedData(temp2);
   };
 
@@ -77,19 +98,19 @@ export default function AddTaskCollector(props) {
             <label htmlFor="my-select">Nhân viên:</label>
             <select id="inputEmployee" name="my-select">
               <option value={""}>-- Chọn nhân viên --</option>
-              {employeessss.map((value, index) => (
-                <option key={index} value={value.name}>
+              {collector.map((value) => (
+                <option key={value.cccd} value={value.cccd + ";" + value.name}>
                   {value.name}
                 </option>
               ))}
             </select>
 
             <label htmlFor="my-select">Loại xe</label>
-            <select id="inputEmployee" name="my-select">
+            <select id="inputType" name="my-select">
               <option value={""}>-- Chọn loại xe --</option>
-              {employeessss.map((value, index) => (
-                <option key={index} value={value.name}>
-                  {value.name}
+              {typeVehicle.map((value, index) => (
+                <option key={index} value={value.type}>
+                  {value.type} tấn
                 </option>
               ))}
             </select>
@@ -97,7 +118,7 @@ export default function AddTaskCollector(props) {
             <label htmlFor="my-select">Ngày:</label>
             <input type="date" id="inputDate" />
             <label htmlFor="my-select">Giờ bắt đầu:</label>
-            <input type="time" id="inputTime" />
+            <input type="time" id="inputStartTime" />
             <label htmlFor="my-select">Giờ kết thúc</label>
             <input type="time" id="inputEndTime" />
           </div>
@@ -127,11 +148,11 @@ export default function AddTaskCollector(props) {
         </div>
         <div className="control">
           <div className="container">
-            <Link to="/taskJanitor">
+            <Link to="/map">
               <button className="back">Trở lại</button>
             </Link>
 
-            <Link to="/taskjanitor" onClick={Save}>
+            <Link to="/map" onClick={Save}>
               <button className="save">Xác nhận thêm</button>
             </Link>
           </div>
